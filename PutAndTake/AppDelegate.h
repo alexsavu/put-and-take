@@ -15,11 +15,7 @@
 @class MapViewController;
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate,MKMapViewDelegate>{
-    
-    CLLocationManager *locationManager;
-    MKMapView *mapView;
-}
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

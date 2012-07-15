@@ -26,77 +26,29 @@
 //    self.window.rootViewController = self.viewController;
 //    [self.window makeKeyAndVisible];
     
-    //Instatiating the app's window
-    
-    CGRect windowFrame = [[UIScreen mainScreen] bounds];
-    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-    self.viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
-    [self.window addSubview: self.viewController.view];
-    
-    
 //    //Instatiating the app's window
 //    
 //    CGRect windowFrame = [[UIScreen mainScreen] bounds];
 //    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-//    self.mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
-//    [self.window addSubview: self.mapViewController.view];
+//    self.viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
+//    [self.window addSubview: self.viewController.view];
     
-    self.mapView = [[MKMapView alloc]initWithFrame:windowFrame];
-    [self.window addSubview:self.mapView];
+    
+    //Instatiating the app's window
+    
+    CGRect windowFrame = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
+    self.mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+    [self.window addSubview: self.mapViewController.view];
     
     
     //Initializing RK with the base URL
     
     [RKClient clientWithBaseURLString:@"http://localhost:1337"];
     
-    //Core location manager
-    locationManager = [[CLLocationManager alloc] init];
-    
-    //Delegate for location
-    [locationManager setDelegate:self];
-    
-    //Asking for all results from the location manager
-    [locationManager setDistanceFilter:kCLDistanceFilterNone];
-    
-    //Make it as acurate as possible
-    [locationManager setDistanceFilter:kCLLocationAccuracyBest];
-    
-    //Tell the manager to start looking for its location
-//    [locationManager startUpdatingLocation];
-    
-    //Shows the blue annotation
-    [self.mapView setShowsUserLocation:YES];
-    
-    //Sets the map delegate to this object
-    [self.mapView setDelegate:self];
-    
     [self.window makeKeyAndVisible];
-
-    
     
     return YES;
-}
-
-#pragma mark MapViewDelegate protocol methods
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    
-    CLLocationCoordinate2D coordinate = [userLocation coordinate];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 250, 250);
-    [self.mapView setRegion:region animated:YES];
-    
-}
-
-#pragma mark location delegate method
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    NSLog(@"%@", newLocation);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    
-    NSLog(@"Could not find location %@", error);
 }
 
 
