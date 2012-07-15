@@ -10,6 +10,7 @@
 		3523448215AC3BEA00290EBA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3523448115AC3BEA00290EBA /* CoreLocation.framework */; };
 		3523448C15AC6FD500290EBA /* LocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3523448B15AC6FD500290EBA /* LocationData.m */; };
 		3534AF8615AAE7D500D9680D /* ServerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3534AF8515AAE7D500D9680D /* ServerData.m */; };
+		3543408515B2C3A000E5B4C5 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3543408415B2C3A000E5B4C5 /* MapPoint.m */; };
 		3587C5CF15AEE07B003FD4CA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587C5CE15AEE07B003FD4CA /* MapViewController.m */; };
 		3587C5D215AEF5AF003FD4CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3587C5D115AEF5AF003FD4CA /* MapKit.framework */; };
 		3587CD0D1585E98D00BD1ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3587CD0C1585E98D00BD1ADA /* UIKit.framework */; };
@@ -29,7 +30,9 @@
 		3523448B15AC6FD500290EBA /* LocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationData.m; sourceTree = "<group>"; };
 		3534AF8415AAE7D500D9680D /* ServerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerData.h; sourceTree = "<group>"; };
 		3534AF8515AAE7D500D9680D /* ServerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerData.m; sourceTree = "<group>"; };
-		3587C5CD15AEE07B003FD4CA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MapViewController.h; sourceTree = "<group>"; };
+		3543408315B2C3A000E5B4C5 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
+		3543408415B2C3A000E5B4C5 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
+		3587C5CD15AEE07B003FD4CA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3587C5CE15AEE07B003FD4CA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3587C5D115AEF5AF003FD4CA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3587CD081585E98D00BD1ADA /* PutAndTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PutAndTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +107,8 @@
 				3587CD1F1585E98D00BD1ADA /* ViewController.m */,
 				3587C5CD15AEE07B003FD4CA /* MapViewController.h */,
 				3587C5CE15AEE07B003FD4CA /* MapViewController.m */,
+				3543408315B2C3A000E5B4C5 /* MapPoint.h */,
+				3543408415B2C3A000E5B4C5 /* MapPoint.m */,
 				3534AF8415AAE7D500D9680D /* ServerData.h */,
 				3534AF8515AAE7D500D9680D /* ServerData.m */,
 				3523448A15AC6FD500290EBA /* LocationData.h */,
@@ -209,6 +214,7 @@
 				3534AF8615AAE7D500D9680D /* ServerData.m in Sources */,
 				3523448C15AC6FD500290EBA /* LocationData.m in Sources */,
 				3587C5CF15AEE07B003FD4CA /* MapViewController.m in Sources */,
+				3543408515B2C3A000E5B4C5 /* MapPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

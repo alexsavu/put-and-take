@@ -64,8 +64,11 @@
     //Tell the manager to start looking for its location
 //    [locationManager startUpdatingLocation];
     
+    //Shows the blue annotation
     [self.mapView setShowsUserLocation:YES];
     
+    //Sets the map delegate to this object
+    [self.mapView setDelegate:self];
     
     [self.window makeKeyAndVisible];
 
@@ -77,6 +80,10 @@
 #pragma mark MapViewDelegate protocol methods
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    
+    CLLocationCoordinate2D coordinate = [userLocation coordinate];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 250, 250);
+    [self.mapView setRegion:region animated:YES];
     
 }
 
