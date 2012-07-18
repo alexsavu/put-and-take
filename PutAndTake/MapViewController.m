@@ -7,10 +7,17 @@
 //
 
 #import "MapViewController.h"
+#import "ServerData.h"
 
 @implementation MapViewController
 
 @synthesize mapView = _mapView;
+
+
+- (void) viewDidAppear:(BOOL)animated{
+    ServerData *data = [ServerData sharedInstance];
+    [data sendRequests];
+}
 
 
 - (void)viewDidLoad

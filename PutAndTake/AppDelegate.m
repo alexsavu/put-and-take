@@ -39,6 +39,7 @@
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     self.mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+    self.window.rootViewController = self.mapViewController;
     [self.window addSubview: self.mapViewController.view];
     
     

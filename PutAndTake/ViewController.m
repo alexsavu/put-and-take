@@ -18,6 +18,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
 }
 
 - (void)viewDidUnload
@@ -31,9 +32,9 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void) viewDidAppear:(BOOL)animated{
-    ServerData *data = [ServerData sharedInstance];
-    [data sendRequests];
-}
+//- (void) viewDidAppear:(BOOL)animated{
+//    ServerData *data = [ServerData sharedInstance];
+//    [data sendRequests];
+//}
 
 @end
