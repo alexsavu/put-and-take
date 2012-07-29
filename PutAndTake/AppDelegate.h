@@ -18,11 +18,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) ViewController *viewController;
-
 @property (strong, nonatomic) MapViewController *mapViewController;
+@property (strong, nonatomic) UINavigationController *navigationController;
 
-@property (strong, nonatomic) MKMapView *mapView;
 
 @end

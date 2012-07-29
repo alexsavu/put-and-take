@@ -10,6 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MAPKit/MapKit.h>
 
+@class MapViewController;
+
+@protocol MapViewDelegate
+
+-(NSInteger) buttonTag:(MapViewController *) sender;
+
+@end
+
 @interface MapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>{
     
     MKMapView *mapView;
@@ -17,5 +25,15 @@
 }
 
 @property (nonatomic,strong) MKMapView *mapView;
+@property (nonatomic,strong) NSArray *sharedLocations;
+@property (nonatomic, weak) id <MapViewDelegate> delegate;
+@property (nonatomic,strong) NSArray *currentZone;
+@property (nonatomic) NSInteger currentZoneIndex;
+
+
+- (void)getLocations;
+- (void)lakesPositions;
+- (void)chooseLocation;
+- (void)zoomToFitMapAnnotations;
 
 @end

@@ -15,6 +15,8 @@
     NSArray *locations;
 }
 
+@property (nonatomic, strong) NSArray *locations;
+
 +(ServerData* ) sharedInstance;
 
 - (void)sendRequests;

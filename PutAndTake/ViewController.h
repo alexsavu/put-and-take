@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class ViewController;
+
+
 @interface ViewController : UIViewController
+
+@property (nonatomic,strong) UIButton *myButton;
+
++(ViewController *) sharedInstance;
++(NSInteger) pressedTag;
++(void) setPressedTag:(NSInteger) pressedTag;
+
+-(void) addButton;
+-(void) moveNextView;
+
 
 @end

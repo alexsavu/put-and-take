@@ -16,7 +16,7 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize mapViewController = _mapViewController;
-@synthesize mapView = _mapView;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -26,21 +26,28 @@
 //    self.window.rootViewController = self.viewController;
 //    [self.window makeKeyAndVisible];
     
-//    //Instatiating the app's window
-//    
-//    CGRect windowFrame = [[UIScreen mainScreen] bounds];
-//    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-//    self.viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
-//    [self.window addSubview: self.viewController.view];
-    
-    
     //Instatiating the app's window
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-    self.mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = self.mapViewController;
-    [self.window addSubview: self.mapViewController.view];
+    self.viewController = [[ViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+//    self.window.rootViewController = self.viewController;
+    [self.window setRootViewController:self.navigationController];
+//    [self.window addSubview:self.navigationController.view];
+    [self.window addSubview: self.viewController.view];
+    [self.navigationController setNavigationBarHidden:YES];
+    self.viewController.view.backgroundColor = [UIColor redColor];
+
+    
+    
+//    //Instatiating the app's window
+//    
+//    CGRect windowFrame = [[UIScreen mainScreen] bounds];
+//    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
+//    self.mapViewController = [[MapViewController alloc] init];
+//    self.window.rootViewController = self.mapViewController;
+//    [self.window addSubview: self.mapViewController.view];
     
     
     //Initializing RK with the base URL

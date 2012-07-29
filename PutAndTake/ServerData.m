@@ -7,10 +7,13 @@
 //
 
 #import "ServerData.h"
+#import "MapViewController.h"
 #import <RestKit/RKJSONParserJSONKit.h>
 
 
 @implementation ServerData
+
+@synthesize locations = _locations;
 
 static ServerData *singleton = nil;
 
@@ -20,6 +23,8 @@ static ServerData *singleton = nil;
     }
     return singleton;
 }
+
+
 
 - (void)sendRequests {
     // Perform a simple HTTP GET and call me back with the results
@@ -34,15 +39,21 @@ static ServerData *singleton = nil;
     if ([response isOK]) {
         // Success! Let's take a look at the data
         RKJSONParserJSONKit *thing = [RKJSONParserJSONKit new];
-        locations = [thing objectFromString:[response bodyAsString] error:nil];
+        self.locations = [thing objectFromString:[response bodyAsString] error:nil];
         
 //        NSLog(@"Retrieved response: %@", [response bodyAsString]);
-        NSLog(@"Locations : %@", locations );
+//        NSLog(@"Locations : %@", self.locations );
+
     }
 }
 
 -(void)request:(RKRequest*)requestdidFailLoadWithError:(NSError*)error{
     NSLog(@"Ohno!Error:%@",[error localizedDescription]);
+}
+
+-(NSArray *) returnLocations:(MapViewController *)sender
+{
+    return self.locations;
 }
 
 @end

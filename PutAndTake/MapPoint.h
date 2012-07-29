@@ -7,14 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface MapPoint : NSObject <MKAnnotation>{
-    
-    CLLocationCoordinate2D coordinate;
-    NSString *title;
-}
+@interface MapPoint : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;

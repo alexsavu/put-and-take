@@ -13,14 +13,23 @@
 @synthesize coordinate = _coordinate;
 @synthesize title = _title;
 
--(id) initWithCoordinate:(CLLocationCoordinate2D) coord title:(NSString *)t{
+-(id) initWithCoordinate:(CLLocationCoordinate2D) coord title:(NSString *)t
+{
     
     self = [super init];
     if (self) {
-        [self setCoordinate:coord];
-        [self setTitle:t];
+        _coordinate.latitude = coord.latitude;
+        _coordinate.longitude = coord.longitude;
+        self.title = t;
     }
     return self;
 }
+
+//- (NSString *)title {
+//    if ([self.title isKindOfClass:[NSNull class]])
+//        return @"Unknown charge";
+//    else
+//        return self.title;
+//}
 
 @end
