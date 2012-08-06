@@ -9,12 +9,9 @@
 #import "ViewController.h"
 #import "ServerData.h"
 #import "MapViewController.h"
+#import "DraggableView.h"
+#import "TestDragView.h"
 
-@interface ViewController () <MapViewDelegate>
-
-@property (nonatomic, weak) MapViewController *mapViewController;
-
-@end
 
 @implementation ViewController
 @synthesize myButton = _myButton;
@@ -54,19 +51,19 @@ static ViewController *singleton = nil;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
-    self.mapViewController.delegate = self;
-    
     
     [self addButton];
     NSLog(@"My button tag is: %i", self.myButton.tag);
+
+    
+    TestDragView *testDrag = [[TestDragView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+    testDrag.backgroundColor = [UIColor grayColor];
+    testDrag.alpha = 0.3;
+    testDrag.parentView = self.view;
+    [self.view addSubview:testDrag];
+    
 }
 
--(void)setMapViewController:(MapViewController *)mapViewController
-{
-    _mapViewController = mapViewController;
-    self.mapViewController.delegate = self;
-}
 
 -(void) moveNextView
 {
@@ -74,10 +71,6 @@ static ViewController *singleton = nil;
     [self.navigationController pushViewController:mapvViewController animated:YES];
 }
 
--(NSInteger) buttonTag:(MapViewController *)sender
-{
-    return self.myButton.tag;
-}
 
 - (void)viewDidUnload
 {

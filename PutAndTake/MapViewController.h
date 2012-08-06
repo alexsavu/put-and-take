@@ -27,7 +27,7 @@
 @property (nonatomic,strong) MKMapView *mapView;
 @property (nonatomic,strong) NSArray *sharedLocations;
 @property (nonatomic, weak) id <MapViewDelegate> delegate;
-@property (nonatomic,strong) NSArray *currentZone;
+@property (nonatomic,strong) NSMutableArray *currentZone;
 @property (nonatomic) NSInteger currentZoneIndex;
 
 

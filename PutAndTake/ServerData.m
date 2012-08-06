@@ -36,7 +36,7 @@ static ServerData *singleton = nil;
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
 {
-    if ([response isOK]) {
+//    if ([response isOK]) {
         // Success! Let's take a look at the data
         RKJSONParserJSONKit *thing = [RKJSONParserJSONKit new];
         self.locations = [thing objectFromString:[response bodyAsString] error:nil];
@@ -44,7 +44,7 @@ static ServerData *singleton = nil;
 //        NSLog(@"Retrieved response: %@", [response bodyAsString]);
 //        NSLog(@"Locations : %@", self.locations );
 
-    }
+//    }
 }
 
 -(void)request:(RKRequest*)requestdidFailLoadWithError:(NSError*)error{

@@ -1,8 +1,9 @@
 PODS:
   - FileMD5Hash (0.0.1)
   - ISO8601DateFormatter (0.6)
-  - JSONKit (1.4)
-  - LibComponentLogging-Core (1.1.6)
+  - JSONKit (1.5pre)
+  - KNSemiModalViewController (0.1)
+  - LibComponentLogging-Core (1.2.2)
   - LibComponentLogging-NSLog (1.0.4):
     - LibComponentLogging-Core (>= 1.1.6)
   - NSData+Base64 (1.0.0)
@@ -31,4 +32,5 @@ PODS:
     - NSData+Base64 (~> 1.0)
 
 DEPENDENCIES:
+  - KNSemiModalViewController (~> 0.1)
   - RestKit (~> 0.10.1)

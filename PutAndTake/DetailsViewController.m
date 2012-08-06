@@ -1,0 +1,64 @@
+//
+//  DetailsViewController.m
+//  PutAndTake
+//
+//  Created by Alexandru Savu on 7/29/12.
+//
+//
+
+#import "DetailsViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface DetailsViewController ()
+
+@end
+
+@implementation DetailsViewController
+
+@synthesize cellView = _cellView;
+
+- (id)initWithSize:(double )x Y:(double)y Width:(double)width Height:(double)height
+{
+    self = [super init];
+    if (self) {
+        self.view.frame = CGRectMake(x, y, width, height);
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:NO];
+    
+    self.view.frame = CGRectMake(0 , 0, 320, 200);
+    
+    CGRect fullScreen = [[UIScreen mainScreen] applicationFrame];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:fullScreen];
+    scrollView.contentSize = CGSizeMake(320.0, 750.0);
+    
+    self.cellView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 280)-(self.view.frame.size.width - 280)/2, 20.0, 280.0, 220.0)];
+    
+    self.cellView.layer.cornerRadius = 6.0;
+    self.cellView.layer.borderWidth = 0.3;
+    self.cellView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.cellView.backgroundColor = [UIColor whiteColor];
+    self.view = scrollView;
+    [self.view addSubview:self.cellView];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+@end

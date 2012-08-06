@@ -10,6 +10,8 @@
 #import "ServerData.h"
 #import "MapPoint.h"
 #import "ViewController.h"
+#import "DetailsViewController.h"
+#import "UIViewController+KNSemiModal.h"
 
 
 @implementation MapViewController
@@ -22,12 +24,14 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    
+    [self.navigationController setNavigationBarHidden:YES];
     ServerData *data = [ServerData sharedInstance];
     [data sendRequests];
     
     [self performSelector:@selector(getLocations) withObject:self afterDelay:0.3];
-    
     [self performSelector:@selector(lakesPositions) withObject:self afterDelay:0.4];
+    
     
 }
 
@@ -37,6 +41,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.mapView];
@@ -79,9 +85,10 @@
 
 -(void)chooseLocation
 {
+    self.currentZone = [[NSMutableArray alloc] init];
     switch ([ViewController pressedTag]) {
         case 20:
-            self.currentZone = [self.sharedLocations valueForKey:@"Nordjelland"];
+            [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
             self.currentZoneIndex = 0;
             break;
             
@@ -98,8 +105,7 @@
     
 //    NSLog(@"Latitude %@", [[[[self.sharedLocations valueForKey:@"awesomeLocations"] objectAtIndex:0] objectAtIndex:0] valueForKey:@"latitude"]);
     
-//    NSLog(@"!!!!!!!!!!!!!!!!!! %@", self.sharedLocations);
-//    NSLog(@"The button type is : %d", [ViewController pressedTag]);
+//    NSLog(@"!!!!!!!!!!!!!!!!!! %@", [[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]);
 
 //    NSLog(@"Location from the viewcontroller: %@",[[self.sharedLocations valueForKey:@"awesomeLocations"] valueForKey:@"latitude"]);
     
@@ -113,10 +119,11 @@
     }
     
     [self chooseLocation];
-    
-    NSLog(@"The things : %@", [self.currentZone objectAtIndex:self.currentZoneIndex]);
-    
-    for (NSArray* row in [self.currentZone objectAtIndex:self.currentZoneIndex]) {
+    NSLog(@"Current Zone %i", self.currentZoneIndex);
+//    NSLog(@"The things : %@", [self.currentZone objectAtIndex:self.currentZoneIndex]);
+
+    for (NSDictionary* row in [self.currentZone objectAtIndex:self.currentZoneIndex]) {
+        NSLog(@"ONE THING %@", row);
         
         NSNumber * latitude = [row valueForKey:@"latitude"];
         NSNumber * longitude = [row valueForKey:@"longitude"];
@@ -129,6 +136,7 @@
         [self.mapView addAnnotation:annotation];
         [self zoomToFitMapAnnotations];
         
+
     }
 }
 
@@ -156,12 +164,15 @@
     static NSString *identifier = @"MyLocation";
     if ([annotation isKindOfClass:[MapPoint class]]) {
         
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         } else {
             annotationView.annotation = annotation;
         }
+        
+        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        annotationView.rightCalloutAccessoryView = infoButton;
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
@@ -170,6 +181,22 @@
     }
     
     return nil;    
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+        calloutAccessoryControlTapped:(UIControl *)control
+{
+    if ([((UIButton *)control)buttonType] == UIButtonTypeDetailDisclosure) {
+        NSLog(@"Title: %@", [(MapPoint*)[view annotation] title]);
+        DetailsViewController *detailsViewController =[[DetailsViewController alloc] initWithSize:0 Y:0 Width:320 Height:340];
+//        [[self navigationController] pushViewController:detailsViewController animated:YES];
+        
+        [self presentSemiViewController:detailsViewController];
+    }
+    
+//    NSLog(@"infoDarkButton for longitude: %f and latitude: %f",
+//          [(MapPoint*)[view annotation] coordinate].longitude,
+//          [(MapPoint*)[view annotation] coordinate].latitude);
 }
 
 

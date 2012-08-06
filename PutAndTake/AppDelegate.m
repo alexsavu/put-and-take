@@ -52,7 +52,7 @@
     
     //Initializing RK with the base URL
     
-    [RKClient clientWithBaseURLString:@"http://localhost:1337"];
+    [RKClient clientWithBaseURLString:@"http://localhost:1337/areas"];
     
     [self.window makeKeyAndVisible];
     

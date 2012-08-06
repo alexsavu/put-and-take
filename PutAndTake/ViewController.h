@@ -15,7 +15,6 @@
 
 @property (nonatomic,strong) UIButton *myButton;
 
-+(ViewController *) sharedInstance;
 +(NSInteger) pressedTag;
 +(void) setPressedTag:(NSInteger) pressedTag;
 
