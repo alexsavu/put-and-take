@@ -10,15 +10,16 @@
 
 @class ViewController;
 
-
 @interface ViewController : UIViewController
 
 @property (nonatomic,strong) UIButton *myButton;
+@property (nonatomic, strong) UILabel *nordjylland;
+@property (nonatomic ,strong) UILabel *ostjylland;
 
 +(NSInteger) pressedTag;
 +(void) setPressedTag:(NSInteger) pressedTag;
++(ViewController *) sharedInstance;
 
--(void) addButton;
 -(void) moveNextView;
 
 

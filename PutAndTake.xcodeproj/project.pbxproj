@@ -19,11 +19,13 @@
 		3587CD191585E98D00BD1ADA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587CD181585E98D00BD1ADA /* main.m */; };
 		3587CD1D1585E98D00BD1ADA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587CD1C1585E98D00BD1ADA /* AppDelegate.m */; };
 		3587CD201585E98D00BD1ADA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587CD1F1585E98D00BD1ADA /* ViewController.m */; };
+		3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1C03C915DE3DA30077D9A0 /* big_arrow.png */; };
 		3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E31327C15BB13AB0061C661 /* map_pointer.png */; };
 		3E372B1615C589410060F8F4 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E372B1515C589410060F8F4 /* DetailsViewController.m */; };
 		3E372B2015C597110060F8F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E372B1F15C597110060F8F4 /* QuartzCore.framework */; };
-		3EB5B78215CE5660002FDF23 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5B78115CE5660002FDF23 /* DraggableView.m */; };
 		3EB5B79215CEB38E002FDF23 /* TestDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5B79115CEB38E002FDF23 /* TestDragView.m */; };
+		3EB5B82915D30F13002FDF23 /* selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82715D30F13002FDF23 /* selector.png */; };
+		3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82815D30F13002FDF23 /* selector@2x.png */; };
 		629F34098BD54BD8B6D4CD0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C380C5918F1A47D5AABC3895 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,14 +51,15 @@
 		3587CD1C1585E98D00BD1ADA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3587CD1E1585E98D00BD1ADA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3587CD1F1585E98D00BD1ADA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3E1C03C915DE3DA30077D9A0 /* big_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_arrow.png; sourceTree = "<group>"; };
 		3E31327C15BB13AB0061C661 /* map_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pointer.png; sourceTree = "<group>"; };
 		3E372B1415C589410060F8F4 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		3E372B1515C589410060F8F4 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		3E372B1F15C597110060F8F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3EB5B78015CE5660002FDF23 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
-		3EB5B78115CE5660002FDF23 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 		3EB5B79015CEB38E002FDF23 /* TestDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDragView.h; sourceTree = "<group>"; };
 		3EB5B79115CEB38E002FDF23 /* TestDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDragView.m; sourceTree = "<group>"; };
+		3EB5B82715D30F13002FDF23 /* selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector.png; sourceTree = "<group>"; };
+		3EB5B82815D30F13002FDF23 /* selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector@2x.png"; sourceTree = "<group>"; };
 		C380C5918F1A47D5AABC3895 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,8 +119,8 @@
 				3E31327B15BB13850061C661 /* Resources */,
 				3587CD1B1585E98D00BD1ADA /* AppDelegate.h */,
 				3587CD1C1585E98D00BD1ADA /* AppDelegate.m */,
-				3EB5B78015CE5660002FDF23 /* DraggableView.h */,
-				3EB5B78115CE5660002FDF23 /* DraggableView.m */,
+				3EB5B79015CEB38E002FDF23 /* TestDragView.h */,
+				3EB5B79115CEB38E002FDF23 /* TestDragView.m */,
 				3E372B1415C589410060F8F4 /* DetailsViewController.h */,
 				3E372B1515C589410060F8F4 /* DetailsViewController.m */,
 				3587CD1E1585E98D00BD1ADA /* ViewController.h */,
@@ -129,8 +132,6 @@
 				3534AF8415AAE7D500D9680D /* ServerData.h */,
 				3534AF8515AAE7D500D9680D /* ServerData.m */,
 				3587CD131585E98D00BD1ADA /* Supporting Files */,
-				3EB5B79015CEB38E002FDF23 /* TestDragView.h */,
-				3EB5B79115CEB38E002FDF23 /* TestDragView.m */,
 			);
 			path = PutAndTake;
 			sourceTree = "<group>";
@@ -149,6 +150,9 @@
 		3E31327B15BB13850061C661 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E1C03C915DE3DA30077D9A0 /* big_arrow.png */,
+				3EB5B82715D30F13002FDF23 /* selector.png */,
+				3EB5B82815D30F13002FDF23 /* selector@2x.png */,
 				3E31327C15BB13AB0061C661 /* map_pointer.png */,
 			);
 			name = Resources;
@@ -207,6 +211,9 @@
 			files = (
 				3587CD171585E98D00BD1ADA /* InfoPlist.strings in Resources */,
 				3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */,
+				3EB5B82915D30F13002FDF23 /* selector.png in Resources */,
+				3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */,
+				3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +248,6 @@
 				3587C5CF15AEE07B003FD4CA /* MapViewController.m in Sources */,
 				3543408515B2C3A000E5B4C5 /* MapPoint.m in Sources */,
 				3E372B1615C589410060F8F4 /* DetailsViewController.m in Sources */,
-				3EB5B78215CE5660002FDF23 /* DraggableView.m in Sources */,
 				3EB5B79215CEB38E002FDF23 /* TestDragView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

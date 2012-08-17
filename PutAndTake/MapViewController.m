@@ -31,18 +31,23 @@
     
     [self performSelector:@selector(getLocations) withObject:self afterDelay:0.3];
     [self performSelector:@selector(lakesPositions) withObject:self afterDelay:0.4];
-    
+    [self addBackButton];
     
 }
 
-
+- (void)addBackButton
+{
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(5, 5, 50, 50);
+    [backButton setBackgroundImage:[UIImage imageNamed:@"big_arrow"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(moveBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.mapView];
@@ -83,14 +88,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)moveBack
+{
+    ViewController *viewController = [ViewController sharedInstance];
+    [self.navigationController popToViewController:viewController animated:YES];
+}
+
 -(void)chooseLocation
 {
+    NSLog(@"Current tag %d", [ViewController pressedTag]);
     self.currentZone = [[NSMutableArray alloc] init];
     switch ([ViewController pressedTag]) {
-        case 20:
+        case 0:
             [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
             self.currentZoneIndex = 0;
             break;
+        case 1:
+            [self.currentZone addObject:[[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]];
+            self.currentZoneIndex = 1;
             
         default:
             break;
@@ -106,6 +121,7 @@
 //    NSLog(@"Latitude %@", [[[[self.sharedLocations valueForKey:@"awesomeLocations"] objectAtIndex:0] objectAtIndex:0] valueForKey:@"latitude"]);
     
 //    NSLog(@"!!!!!!!!!!!!!!!!!! %@", [[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]);
+//    NSLog(@"?????????????????? %@", [[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]);
 
 //    NSLog(@"Location from the viewcontroller: %@",[[self.sharedLocations valueForKey:@"awesomeLocations"] valueForKey:@"latitude"]);
     
@@ -120,9 +136,9 @@
     
     [self chooseLocation];
     NSLog(@"Current Zone %i", self.currentZoneIndex);
-//    NSLog(@"The things : %@", [self.currentZone objectAtIndex:self.currentZoneIndex]);
+//    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
 
-    for (NSDictionary* row in [self.currentZone objectAtIndex:self.currentZoneIndex]) {
+    for (NSDictionary* row in [self.currentZone objectAtIndex:0]) {
         NSLog(@"ONE THING %@", row);
         
         NSNumber * latitude = [row valueForKey:@"latitude"];

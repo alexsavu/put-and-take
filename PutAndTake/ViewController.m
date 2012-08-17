@@ -9,16 +9,19 @@
 #import "ViewController.h"
 #import "ServerData.h"
 #import "MapViewController.h"
-#import "DraggableView.h"
 #import "TestDragView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation ViewController
 @synthesize myButton = _myButton;
+@synthesize nordjylland = _nordjylland;
+@synthesize ostjylland = _ostjylland;
 
 static NSInteger _pressedTag = 0;
 
 static ViewController *singleton = nil;
+
 +(ViewController *) sharedInstance
 {
     if (singleton == nil) {
@@ -35,35 +38,55 @@ static ViewController *singleton = nil;
     _pressedTag = pressedTag;
 }
 
--(void) addButton
-{
-    self.myButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.myButton.frame = CGRectMake(110.0, 360.0, 100.0, 30.0);
-    [ViewController setPressedTag:20];
-    [self.myButton setTitle:@"Nordjylland" forState:UIControlStateNormal];
-    [self.myButton addTarget:self action:@selector(moveNextView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.myButton];
-
-}
+//+(ViewController*) init {
+//    [super init];
+//    NSLog(@"custom init");
+//    return [ViewController sharedInstance];
+//}
 
 
 - (void)viewDidLoad
 {
+        
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [self addButton];
-    NSLog(@"My button tag is: %i", self.myButton.tag);
-
+    UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(20.0, 60.0, 260.0, 350.0)];
+    borderView.layer.cornerRadius = 1.5;
+    borderView.layer.borderWidth = 0.3;
+    borderView.layer.borderColor = [UIColor grayColor].CGColor;
+    borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     
+//    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
+//    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
+//    borderView.layer.shadowOpacity = 3;
+//    borderView.layer.shouldRasterize = YES;
+    
+    [self.view addSubview:borderView];
+    
+    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 200, 48)];
+    [self.nordjylland setBackgroundColor:[UIColor clearColor]];
+    self.nordjylland.text = @"Nordjylland";
+    self.nordjylland.tag = 20;
+    self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.nordjylland setFont:[UIFont fontWithName:@"HiraKakuProN-W3" size:35]];
+    self.nordjylland.opaque = YES;
+    [borderView addSubview:self.nordjylland];
+    
+    self.ostjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 48)];
+    [self.ostjylland setBackgroundColor:[UIColor clearColor]];
+    self.ostjylland.text = @"Vestjylland";
+    self.ostjylland.tag = 20;
+    self.ostjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.ostjylland setFont:[UIFont fontWithName:@"HiraKakuProN-W3" size:35]];
+    self.ostjylland.opaque = YES;
+    [borderView addSubview:self.ostjylland];
+
     TestDragView *testDrag = [[TestDragView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
-    testDrag.backgroundColor = [UIColor grayColor];
-    testDrag.alpha = 0.3;
     testDrag.parentView = self.view;
     [self.view addSubview:testDrag];
     
 }
-
 
 -(void) moveNextView
 {

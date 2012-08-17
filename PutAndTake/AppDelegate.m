@@ -30,14 +30,14 @@
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-    self.viewController = [[ViewController alloc] init];
+    self.viewController = [ViewController sharedInstance];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
 //    self.window.rootViewController = self.viewController;
     [self.window setRootViewController:self.navigationController];
 //    [self.window addSubview:self.navigationController.view];
     [self.window addSubview: self.viewController.view];
     [self.navigationController setNavigationBarHidden:YES];
-    self.viewController.view.backgroundColor = [UIColor redColor];
+    self.viewController.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
 
     
     

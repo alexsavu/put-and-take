@@ -35,5 +35,7 @@
 - (void)lakesPositions;
 - (void)chooseLocation;
 - (void)zoomToFitMapAnnotations;
+- (void)addBackButton;
+- (void)moveBack;
 
 @end

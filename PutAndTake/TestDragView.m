@@ -7,6 +7,7 @@
 //
 
 #import "TestDragView.h"
+#import "ViewController.h"
 
 @implementation TestDragView
 
@@ -19,11 +20,13 @@
     if (self) {
         // Initialization code
         self.userInteractionEnabled = YES;
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selector"]];
         
     }
     
     return self;
 }
+
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
     CGPoint pt = [[touches  anyObject] locationInView:self.parentView];
@@ -45,6 +48,7 @@
     } else {
         self.lastPoint = pt;
     }
+
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -59,6 +63,8 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    ViewController *oneInstance = [ViewController sharedInstance];
+    
     [UIView beginAnimations:nil context:nil];
     CGRect newFrame = self.frame;
     
@@ -66,8 +72,6 @@
 
     int topDiff = ((int)(self.lastPoint.y/self.frame.size.height))*self.frame.size.height;
     int bottomDiff = ((int)(self.lastPoint.y/self.frame.size.height)+1)*self.frame.size.height;
-    
-    NSLog(@"%f", self.lastPoint.y);
     
     if(topDiff<100)
         topDiff = 100;
@@ -87,9 +91,28 @@
     self.frame = newFrame;
     [UIView commitAnimations];
     
+    NSLog(@"Current position: %f", newFrame.origin.y);
+    
     // setting it back to zero so it doesn't get confused with the last point
     self.lastPoint = CGPointZero;
+    
+    if (newFrame.origin.y == 100.0) {
+//        oneInstance.nordjylland.textColor = [UIColor colorWithRed:0.73 green:0.73 blue:0.73 alpha:1];
+        oneInstance.nordjylland.textColor = [UIColor whiteColor];
+        [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
+        [ViewController setPressedTag:0];
+    }else if (newFrame.origin.y == 150.0){
+        oneInstance.ostjylland.textColor = [UIColor whiteColor];
+        [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];        
+        [ViewController setPressedTag:1];
+    }else{
+        oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        oneInstance.ostjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    }
+    
 }
+
+
 
 /*
  // Only override drawRect: if you perform custom drawing.

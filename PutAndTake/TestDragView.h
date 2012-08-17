@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TestDragView; 
+
 @interface TestDragView : UIView
 
 @property (nonatomic) CGPoint lastPoint;  
-@property (nonatomic, retain) UIView *parentView; 
+@property (nonatomic, retain) UIView *parentView;
  
-- (id)initWithFrame:(CGRect)frame; 
+- (id)initWithFrame:(CGRect)frame;
  
 
 @end
