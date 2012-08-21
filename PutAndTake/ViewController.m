@@ -12,11 +12,13 @@
 #import "TestDragView.h"
 #import <QuartzCore/QuartzCore.h>
 
-
 @implementation ViewController
 @synthesize myButton = _myButton;
 @synthesize nordjylland = _nordjylland;
-@synthesize ostjylland = _ostjylland;
+@synthesize vestjylland = _ostjylland;
+
+@synthesize touchPoint = _touchPoint;
+@synthesize testDrag = _testDrag;
 
 static NSInteger _pressedTag = 0;
 
@@ -57,41 +59,59 @@ static ViewController *singleton = nil;
     borderView.layer.borderColor = [UIColor grayColor].CGColor;
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     
-//    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
-//    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
-//    borderView.layer.shadowOpacity = 3;
-//    borderView.layer.shouldRasterize = YES;
+    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
+    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
+    borderView.layer.shadowOpacity = 3;
+    borderView.layer.shouldRasterize = YES;
     
     [self.view addSubview:borderView];
     
-    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 200, 48)];
+    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 45, 200, 48)];
     [self.nordjylland setBackgroundColor:[UIColor clearColor]];
     self.nordjylland.text = @"Nordjylland";
     self.nordjylland.tag = 20;
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.nordjylland setFont:[UIFont fontWithName:@"HiraKakuProN-W3" size:35]];
+    [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     self.nordjylland.opaque = YES;
     [borderView addSubview:self.nordjylland];
     
-    self.ostjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 48)];
-    [self.ostjylland setBackgroundColor:[UIColor clearColor]];
-    self.ostjylland.text = @"Vestjylland";
-    self.ostjylland.tag = 20;
-    self.ostjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.ostjylland setFont:[UIFont fontWithName:@"HiraKakuProN-W3" size:35]];
-    self.ostjylland.opaque = YES;
-    [borderView addSubview:self.ostjylland];
+    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 48)];
+    [self.vestjylland setBackgroundColor:[UIColor clearColor]];
+    self.vestjylland.text = @"Vestjylland";
+    self.vestjylland.tag = 20;
+    self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    self.vestjylland.opaque = YES;
+    [borderView addSubview:self.vestjylland];
 
-    TestDragView *testDrag = [[TestDragView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
-    testDrag.parentView = self.view;
-    [self.view addSubview:testDrag];
+    self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+    self.testDrag.parentView = self.view;
+    [self.view addSubview:self.testDrag];
     
 }
 
--(void) moveNextView
+
+-(void)moveNextView
 {
     MapViewController *mapvViewController = [[MapViewController alloc] init];
     [self.navigationController pushViewController:mapvViewController animated:YES];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    
+    // Get the specific point that was touched
+    CGPoint point = [touch locationInView:self.view];
+    NSLog(@"Y Location: %f",point.y);
+    self.touchPoint = point.y;
+
+    if (point.y > 100 && point.y < 140) {
+     
+        [self.testDrag repositionWith:point.y];
+
+    }
+    
 }
 
 

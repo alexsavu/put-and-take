@@ -43,11 +43,14 @@
     
     self.cellView.layer.cornerRadius = 6.0;
     self.cellView.layer.borderWidth = 0.3;
-    self.cellView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.cellView.backgroundColor = [UIColor whiteColor];
+    self.cellView.layer.shadowOffset = CGSizeMake(0, 0.8);
+    self.cellView.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.cellView.layer.shadowOpacity = 3;
+    self.cellView.layer.shouldRasterize = YES;
+    self.cellView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     self.view = scrollView;
     [self.view addSubview:self.cellView];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,25 +10,21 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MAPKit/MapKit.h>
 
-@class MapViewController;
-
-@protocol MapViewDelegate
-
--(NSInteger) buttonTag:(MapViewController *) sender;
-
-@end
+@class ClusteringMapView;
+@class ClusteredAnnotation;
 
 @interface MapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>{
     
-    MKMapView *mapView;
+    ClusteringMapView *mapView;
     CLLocationManager *locationManager;
 }
 
-@property (nonatomic,strong) MKMapView *mapView;
+@property (nonatomic, strong) ClusteredAnnotation *annotation;
+@property (nonatomic,strong) ClusteringMapView *mapView;
 @property (nonatomic,strong) NSArray *sharedLocations;
-@property (nonatomic, weak) id <MapViewDelegate> delegate;
 @property (nonatomic,strong) NSMutableArray *currentZone;
 @property (nonatomic) NSInteger currentZoneIndex;
+@property (nonatomic, strong) NSMutableArray *arrayOfLocations;
 
 
 - (void)getLocations;

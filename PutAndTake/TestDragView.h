@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class TestDragView; 
+#import "ViewController.h"
 
 @interface TestDragView : UIView
 
 @property (nonatomic) CGPoint lastPoint;  
 @property (nonatomic, retain) UIView *parentView;
  
-- (id)initWithFrame:(CGRect)frame;
- 
+-(id)initWithFrame:(CGRect)frame;
+-(void)repositionWith: (float)y;
 
 @end

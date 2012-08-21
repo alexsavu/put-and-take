@@ -10,6 +10,9 @@
 #import <RestKit/RestKit.h>
 #import "ViewController.h"
 #import "MapViewController.h"
+#import "GANTracker.h"
+
+static const NSInteger kGANDispatchPeriodSec = 10;
 
 @implementation AppDelegate
 
@@ -20,6 +23,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-34223732-1"
+                                           dispatchPeriod:10
+                                                 delegate:nil];
+    
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.
 //    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
@@ -58,6 +65,7 @@
     
     return YES;
 }
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

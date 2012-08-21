@@ -12,15 +12,17 @@
 #import "ViewController.h"
 #import "DetailsViewController.h"
 #import "UIViewController+KNSemiModal.h"
-
+#import "ClusteredAnnotation.h"
+#import "ClusteringMapView.h"
 
 @implementation MapViewController
 
 @synthesize mapView = _mapView;
 @synthesize sharedLocations = _sharedLocations;
-@synthesize delegate = _delegate;
 @synthesize currentZone = _currentZone;
 @synthesize currentZoneIndex = _currentZoneIndex;
+@synthesize arrayOfLocations = _arrayOfLocations;
+@synthesize annotation = _annotation;
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -49,7 +51,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    self.arrayOfLocations = [[NSMutableArray alloc] init];
+    
+    self.mapView = [[ClusteringMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.mapView];
     
     //Sets the map delegate to this object
@@ -72,7 +76,6 @@
     
     //Shows the blue annotation
 //    [self.mapView setShowsUserLocation:YES];
-
 
 }
 
@@ -130,14 +133,14 @@
 
 - (void)lakesPositions {
     
-    for (id<MKAnnotation> annotation in self.mapView.annotations) {
-        [self.mapView removeAnnotation:annotation];
-    }
+//    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+//        [self.mapView removeAnnotation:annotation];
+//    }
     
     [self chooseLocation];
     NSLog(@"Current Zone %i", self.currentZoneIndex);
 //    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
-
+    
     for (NSDictionary* row in [self.currentZone objectAtIndex:0]) {
         NSLog(@"ONE THING %@", row);
         
@@ -148,12 +151,16 @@
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = latitude.doubleValue;
         coordinate.longitude = longitude.doubleValue;
-        MapPoint *annotation = [[MapPoint alloc] initWithCoordinate:coordinate title:name] ;
-        [self.mapView addAnnotation:annotation];
-        [self zoomToFitMapAnnotations];
-        
-
+        self.annotation = [[ClusteredAnnotation alloc] initWithCoordinate:coordinate];
+        self.annotation.title = name;
+        [self.arrayOfLocations addObject:self.annotation];
+//        [self.mapView addAnnotation:annotation];
+//        [self zoomToFitMapAnnotations];
     }
+    // Center out map on our locations
+    [self.mapView centerMapOnAnnotationSet:self.arrayOfLocations];
+    // Add our annotations to the map
+    [self.mapView addAnnotations:self.arrayOfLocations];
 }
 
 
@@ -178,9 +185,10 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
     static NSString *identifier = @"MyLocation";
-    if ([annotation isKindOfClass:[MapPoint class]]) {
+    
+    if ([annotation isKindOfClass:[ClusteredAnnotation class]]) {
         
-        MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        MKAnnotationView *annotationView = (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         } else {
@@ -192,7 +200,7 @@
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-        annotationView.image=[UIImage imageNamed:@"map_pointer.png"];        
+        annotationView.image=[UIImage imageNamed:@"map_pointer.png"];
         return annotationView;
     }
     
@@ -223,6 +231,8 @@
 //    [self.mapView setRegion:region animated:YES];
 //    
 //}
+
+
 
 #pragma mark location delegate method
 

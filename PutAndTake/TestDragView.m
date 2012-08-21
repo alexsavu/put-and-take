@@ -8,6 +8,8 @@
 
 #import "TestDragView.h"
 #import "ViewController.h"
+#import "NSString+Tools.h"
+#import "GANTracker.h"
 
 @implementation TestDragView
 
@@ -27,6 +29,10 @@
     return self;
 }
 
+-(void)loadView
+{
+    NSError *error;
+}
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
     CGPoint pt = [[touches  anyObject] locationInView:self.parentView];
@@ -53,7 +59,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -87,7 +93,7 @@
     }
     
     newFrame.origin.y = lockLocation;
-    
+
     self.frame = newFrame;
     [UIView commitAnimations];
     
@@ -96,22 +102,71 @@
     // setting it back to zero so it doesn't get confused with the last point
     self.lastPoint = CGPointZero;
     
-    if (newFrame.origin.y == 100.0) {
-//        oneInstance.nordjylland.textColor = [UIColor colorWithRed:0.73 green:0.73 blue:0.73 alpha:1];
-        oneInstance.nordjylland.textColor = [UIColor whiteColor];
-        [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
-        [ViewController setPressedTag:0];
-    }else if (newFrame.origin.y == 150.0){
-        oneInstance.ostjylland.textColor = [UIColor whiteColor];
-        [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];        
-        [ViewController setPressedTag:1];
-    }else{
-        oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-        oneInstance.ostjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    oneInstance.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    
+    switch ((int)newFrame.origin.y) {
+        case 100:
+        {
+            oneInstance.nordjylland.textColor = [UIColor whiteColor];
+            [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
+            [ViewController setPressedTag:0];
+            
+            NSError *error;
+//            if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
+//                                                                 name:@"iPhone"
+//                                                                value:@"iv1"
+//                                                            withError:&error]) {
+//                NSLog(@"The error: %@",error);
+//            }
+            
+            if (![[GANTracker sharedTracker] trackEvent:@"button_click"
+                                                 action:@"Nordjylland"
+                                                  label:@"my_label"
+                                                  value:99
+                                              withError:&error]) {
+                NSLog(@"The error: %@",error);
+            }
+        }
+            break;
+            
+        case 150:
+            oneInstance.vestjylland.textColor = [UIColor whiteColor];
+            [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
+            [ViewController setPressedTag:1];
+            break;
+            
+        default:
+            oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            oneInstance.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            
+            break;
     }
     
 }
 
+-(void)repositionWith: (float)y
+{
+    ViewController *oneInstance = [ViewController sharedInstance];
+    
+    oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    oneInstance.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    
+    [UIView animateWithDuration:0.7 animations:^{
+        CGRect newFrame = self.frame;
+        if (y > 100 && y < 140) {
+            newFrame.origin.y = 100;
+        
+        }
+        self.frame = newFrame;
+    
+    } completion:^(BOOL finished){
+        
+        oneInstance.nordjylland.textColor = [UIColor whiteColor];
+        [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
+        [ViewController setPressedTag:0];
+    }];
+}
 
 
 /*
