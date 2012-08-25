@@ -11,6 +11,7 @@
 #import "MapViewController.h"
 #import "TestDragView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GANTracker.h"
 
 @implementation ViewController
 @synthesize myButton = _myButton;
@@ -53,6 +54,9 @@ static ViewController *singleton = nil;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [[GANTracker sharedTracker] trackPageview:@"/menu_view" withError:nil];
+    
+    
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(20.0, 60.0, 260.0, 350.0)];
     borderView.layer.cornerRadius = 1.5;
     borderView.layer.borderWidth = 0.3;
@@ -84,7 +88,7 @@ static ViewController *singleton = nil;
     self.vestjylland.opaque = YES;
     [borderView addSubview:self.vestjylland];
 
-    self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+    self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 300.0, 50.0)];
     self.testDrag.parentView = self.view;
     [self.view addSubview:self.testDrag];
     

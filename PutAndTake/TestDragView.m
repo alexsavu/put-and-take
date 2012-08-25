@@ -8,7 +8,6 @@
 
 #import "TestDragView.h"
 #import "ViewController.h"
-#import "NSString+Tools.h"
 #import "GANTracker.h"
 
 @implementation TestDragView
@@ -27,11 +26,6 @@
     }
     
     return self;
-}
-
--(void)loadView
-{
-    NSError *error;
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
@@ -112,21 +106,17 @@
             [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
             [ViewController setPressedTag:0];
             
-            NSError *error;
-//            if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
-//                                                                 name:@"iPhone"
-//                                                                value:@"iv1"
-//                                                            withError:&error]) {
-//                NSLog(@"The error: %@",error);
-//            }
+            [[GANTracker sharedTracker] setCustomVariableAtIndex:1
+                                                            name:@"iPhone"
+                                                           value:@"iv1"
+                                                       withError:nil];
             
-            if (![[GANTracker sharedTracker] trackEvent:@"button_click"
+            [[GANTracker sharedTracker] trackEvent:@"button_click"
                                                  action:@"Nordjylland"
                                                   label:@"my_label"
                                                   value:99
-                                              withError:&error]) {
-                NSLog(@"The error: %@",error);
-            }
+                                                withError:nil];
+        
         }
             break;
             

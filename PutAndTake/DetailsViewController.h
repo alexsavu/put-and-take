@@ -11,7 +11,10 @@
 @interface DetailsViewController : UIViewController
 
 @property (nonatomic, strong) UIView *cellView;
+@property (nonatomic, strong) UIButton *doneButton;
 
 - (id)initWithSize:(double )x Y:(double)y Width:(double)width Height:(double)height;
+
+- (void)close:(id)sender;
 
 @end

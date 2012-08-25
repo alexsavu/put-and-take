@@ -23,15 +23,14 @@
 		3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E31327C15BB13AB0061C661 /* map_pointer.png */; };
 		3E372B1615C589410060F8F4 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E372B1515C589410060F8F4 /* DetailsViewController.m */; };
 		3E372B2015C597110060F8F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E372B1F15C597110060F8F4 /* QuartzCore.framework */; };
-		3E5CA73315E01B1D00F80CA8 /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA73215E01B1D00F80CA8 /* NSString+Tools.m */; };
 		3E5CA78815E2301600F80CA8 /* ClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA78515E2301600F80CA8 /* ClusteredAnnotation.m */; };
 		3E5CA78915E2301600F80CA8 /* ClusteringMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA78715E2301600F80CA8 /* ClusteringMapView.m */; };
 		3E5CA79D15E2CBCA00F80CA8 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79C15E2CBCA00F80CA8 /* libGoogleAnalytics.a */; };
 		3E5CA79F15E2CBE600F80CA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */; };
 		3E5CA7AA15E2CCCF00F80CA8 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */; };
 		3E5CA7AE15E2E35A00F80CA8 /* Raleway Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */; };
+		3E7D93EA15E429B0009869B7 /* selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E7D93E915E429B0009869B7 /* selector.png */; };
 		3EB5B79215CEB38E002FDF23 /* TestDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5B79115CEB38E002FDF23 /* TestDragView.m */; };
-		3EB5B82915D30F13002FDF23 /* selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82715D30F13002FDF23 /* selector.png */; };
 		3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82815D30F13002FDF23 /* selector@2x.png */; };
 		629F34098BD54BD8B6D4CD0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C380C5918F1A47D5AABC3895 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -63,8 +62,6 @@
 		3E372B1415C589410060F8F4 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		3E372B1515C589410060F8F4 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		3E372B1F15C597110060F8F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3E5CA73115E01B1D00F80CA8 /* NSString+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tools.h"; sourceTree = "<group>"; };
-		3E5CA73215E01B1D00F80CA8 /* NSString+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tools.m"; sourceTree = "<group>"; };
 		3E5CA78415E2301600F80CA8 /* ClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusteredAnnotation.h; sourceTree = "<group>"; };
 		3E5CA78515E2301600F80CA8 /* ClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusteredAnnotation.m; sourceTree = "<group>"; };
 		3E5CA78615E2301600F80CA8 /* ClusteringMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusteringMapView.h; sourceTree = "<group>"; };
@@ -74,9 +71,9 @@
 		3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway Thin.ttf"; sourceTree = "<group>"; };
+		3E7D93E915E429B0009869B7 /* selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector.png; sourceTree = "<group>"; };
 		3EB5B79015CEB38E002FDF23 /* TestDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDragView.h; sourceTree = "<group>"; };
 		3EB5B79115CEB38E002FDF23 /* TestDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDragView.m; sourceTree = "<group>"; };
-		3EB5B82715D30F13002FDF23 /* selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector.png; sourceTree = "<group>"; };
 		3EB5B82815D30F13002FDF23 /* selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector@2x.png"; sourceTree = "<group>"; };
 		C380C5918F1A47D5AABC3895 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,8 +154,6 @@
 				3534AF8415AAE7D500D9680D /* ServerData.h */,
 				3534AF8515AAE7D500D9680D /* ServerData.m */,
 				3587CD131585E98D00BD1ADA /* Supporting Files */,
-				3E5CA73115E01B1D00F80CA8 /* NSString+Tools.h */,
-				3E5CA73215E01B1D00F80CA8 /* NSString+Tools.m */,
 			);
 			path = PutAndTake;
 			sourceTree = "<group>";
@@ -177,9 +172,9 @@
 		3E31327B15BB13850061C661 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E7D93E915E429B0009869B7 /* selector.png */,
 				3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */,
 				3E1C03C915DE3DA30077D9A0 /* big_arrow.png */,
-				3EB5B82715D30F13002FDF23 /* selector.png */,
 				3EB5B82815D30F13002FDF23 /* selector@2x.png */,
 				3E31327C15BB13AB0061C661 /* map_pointer.png */,
 			);
@@ -259,10 +254,10 @@
 			files = (
 				3587CD171585E98D00BD1ADA /* InfoPlist.strings in Resources */,
 				3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */,
-				3EB5B82915D30F13002FDF23 /* selector.png in Resources */,
 				3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */,
 				3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */,
 				3E5CA7AE15E2E35A00F80CA8 /* Raleway Thin.ttf in Resources */,
+				3E7D93EA15E429B0009869B7 /* selector.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +293,6 @@
 				3543408515B2C3A000E5B4C5 /* MapPoint.m in Sources */,
 				3E372B1615C589410060F8F4 /* DetailsViewController.m in Sources */,
 				3EB5B79215CEB38E002FDF23 /* TestDragView.m in Sources */,
-				3E5CA73315E01B1D00F80CA8 /* NSString+Tools.m in Sources */,
 				3E5CA78815E2301600F80CA8 /* ClusteredAnnotation.m in Sources */,
 				3E5CA78915E2301600F80CA8 /* ClusteringMapView.m in Sources */,
 			);

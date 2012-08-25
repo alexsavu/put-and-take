@@ -16,6 +16,7 @@
 @implementation DetailsViewController
 
 @synthesize cellView = _cellView;
+@synthesize doneButton = _doneButton;
 
 - (id)initWithSize:(double )x Y:(double)y Width:(double)width Height:(double)height
 {
@@ -39,7 +40,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:fullScreen];
     scrollView.contentSize = CGSizeMake(320.0, 750.0);
     
-    self.cellView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 280)-(self.view.frame.size.width - 280)/2, 20.0, 280.0, 220.0)];
+    self.cellView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 280)-(self.view.frame.size.width - 280)/2, 70.0, 280.0, 220.0)];
     
     self.cellView.layer.cornerRadius = 6.0;
     self.cellView.layer.borderWidth = 0.3;
@@ -50,7 +51,23 @@
     self.cellView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     self.view = scrollView;
     [self.view addSubview:self.cellView];
+    
+    UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    doneButton.layer.cornerRadius = 3.0;
+//    doneButton.layer.borderWidth = 0.3;
+    [doneButton setTitle:@"done" forState:UIControlStateNormal];
+//    [doneButton setTitleColor:[UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1] forState:UIControlStateNormal];
+    doneButton.frame = CGRectMake(250.0, 10.0, 60.0, 40.0);
+//    doneButton.titleLabel.font = [UIFont fontWithName:@"Raleway" size:15];
+    [doneButton addTarget:self action:@selector(close:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:doneButton];
+    
     self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
+}
+
+- (void)close:(id)sender
+{
+    NSLog(@"View dismissed");
 }
 
 - (void)didReceiveMemoryWarning
