@@ -99,7 +99,7 @@
 
 -(void)chooseLocation
 {
-    NSLog(@"Current tag %d", [ViewController pressedTag]);
+//    NSLog(@"Current tag %d", [ViewController pressedTag]);
     self.currentZone = [[NSMutableArray alloc] init];
     switch ([ViewController pressedTag]) {
         case 0:
@@ -138,21 +138,24 @@
 //    }
     
     [self chooseLocation];
-    NSLog(@"Current Zone %i", self.currentZoneIndex);
+//    NSLog(@"Current Zone %i", self.currentZoneIndex);
 //    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
     
     for (NSDictionary* row in [self.currentZone objectAtIndex:0]) {
-        NSLog(@"ONE THING %@", row);
+//        NSLog(@"ONE THING %@", row);
         
-        NSNumber * latitude = [row valueForKey:@"latitude"];
-        NSNumber * longitude = [row valueForKey:@"longitude"];
-        NSString * name = [row valueForKey:@"name"];
+        NSNumber *latitude = [row valueForKey:@"latitude"];
+        NSNumber *longitude = [row valueForKey:@"longitude"];
+        NSString *name = [row valueForKey:@"name"];
+        NSString *price = [row valueForKey:@"price"];
+        NSString *phone = [row valueForKey:@"phone"];
+        NSString *address = [row valueForKey:@"address"];
         
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = latitude.doubleValue;
         coordinate.longitude = longitude.doubleValue;
-        self.annotation = [[ClusteredAnnotation alloc] initWithCoordinate:coordinate];
-        self.annotation.title = name;
+        self.annotation = [[ClusteredAnnotation alloc] initWithCoordinate:coordinate andTitle:name andPrice:price andPhone:phone andAddress:address];
+//        self.annotation.title = name;
         [self.arrayOfLocations addObject:self.annotation];
 //        [self.mapView addAnnotation:annotation];
 //        [self zoomToFitMapAnnotations];
@@ -211,11 +214,15 @@
         calloutAccessoryControlTapped:(UIControl *)control
 {
     if ([((UIButton *)control)buttonType] == UIButtonTypeDetailDisclosure) {
-        NSLog(@"Title: %@", [(MapPoint*)[view annotation] title]);
+        NSLog(@"Title: %@", [(ClusteredAnnotation*)[view annotation] title]);
         DetailsViewController *detailsViewController =[[DetailsViewController alloc] initWithSize:0 Y:0 Width:320 Height:340];
 //        [[self navigationController] pushViewController:detailsViewController animated:YES];
-        
         [self presentSemiViewController:detailsViewController];
+        
+        NSLog(@"The address: %@",[(ClusteredAnnotation*)[view annotation] address]);
+        detailsViewController.price = [(ClusteredAnnotation*)[view annotation] price];
+        detailsViewController.phone = [(ClusteredAnnotation*)[view annotation] phone];
+        detailsViewController.address = [(ClusteredAnnotation*)[view annotation] address];
     }
     
 //    NSLog(@"infoDarkButton for longitude: %f and latitude: %f",

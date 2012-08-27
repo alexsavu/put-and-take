@@ -9,14 +9,19 @@
 
 @implementation ClusteredAnnotation
 
-@synthesize title, subtitle, coordinate, clusterCoordinate, actualCoordinate, childAnnotations;
+@synthesize title, subtitle,price,phone,address, coordinate, clusterCoordinate, actualCoordinate, childAnnotations;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D) aCoordinate{
+- (id)initWithCoordinate:(CLLocationCoordinate2D) aCoordinate andTitle:(NSString *)aTitle
+                andPrice:(NSString *)aPrice andPhone:(NSString *)aPhone andAddress:(NSString *)anAddress{
     if ( self = [super init])
     {
         // The coordinate property is really just it's current location, which is set to
         // either the clusterCoordinate or the actualCoordinate from the ClusteredMapView
         coordinate = aCoordinate;
+        title = aTitle;
+        price = aPrice;
+        phone = aPhone;
+        address = anAddress;
         // Set the current cluster coordinate to the original coordinate by default
         clusterCoordinate = aCoordinate;
         // Set the actual coordinate
