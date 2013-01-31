@@ -21,7 +21,7 @@
     if (self) {
         // Initialization code
         self.userInteractionEnabled = YES;
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selector"]];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selector.png"]];
         
     }
     
