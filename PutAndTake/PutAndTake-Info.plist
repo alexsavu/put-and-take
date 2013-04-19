@@ -39,7 +39,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Raleway Thin.ttf</string>
+		<string>Raleway.ttf</string>
+		<string>Infinity.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>

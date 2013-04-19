@@ -58,36 +58,43 @@ static ViewController *singleton = nil;
     
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake( (int) self.view.frame.origin.x + 30.0,(int) self.view.frame.origin.y + 35.0,(int) self.view.frame.size.width - 60.0,(int) self.view.frame.size.height - 130.0)];
     borderView.layer.cornerRadius = 1.5;
-    borderView.layer.borderWidth = 0.3;
-    borderView.layer.borderColor = [UIColor grayColor].CGColor;
+    borderView.layer.borderWidth = 3.5;
+    borderView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     
     borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
     borderView.layer.shadowColor = [UIColor grayColor].CGColor;
     borderView.layer.shadowOpacity = 3;
-    borderView.layer.shouldRasterize = YES;
+//    borderView.layer.shouldRasterize = YES;
     borderView.frame = CGRectIntegral(borderView.frame);
     
     [self.view addSubview:borderView];
     
-    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 45, 200, 45)];
+    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 45, 200, 46)];
     [self.nordjylland setBackgroundColor:[UIColor clearColor]];
     self.nordjylland.text = @"Nordjylland";
-    self.nordjylland.numberOfLines = 2;
+    [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
+    [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
     self.nordjylland.tag = 20;
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    self.nordjylland.frame =CGRectIntegral(self.nordjylland.frame);
+    [self.nordjylland setFont:[UIFont systemFontOfSize:38]];
     self.nordjylland.opaque = YES;
     [borderView addSubview:self.nordjylland];
     
-    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 45)];
+    UIButton *test = [UIButton buttonWithType:UIButtonTypeCustom];
+    test.frame = CGRectMake(10, 200.f, 150.f, 56.f);
+    [test setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [test setTitle:@"TEEEST" forState:UIControlStateNormal];
+    [test.titleLabel setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    [borderView addSubview:test];
+    
+    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 46)];
     [self.vestjylland setBackgroundColor:[UIColor clearColor]];
     self.vestjylland.text = @"Vestjylland";
     self.vestjylland.tag = 20;
     self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    self.vestjylland.opaque = YES;
+    //self.vestjylland.opaque = YES;
     [borderView addSubview:self.vestjylland];
 
     self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];

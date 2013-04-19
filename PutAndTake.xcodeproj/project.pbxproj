@@ -28,7 +28,6 @@
 		3E5CA79D15E2CBCA00F80CA8 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79C15E2CBCA00F80CA8 /* libGoogleAnalytics.a */; };
 		3E5CA79F15E2CBE600F80CA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */; };
 		3E5CA7AA15E2CCCF00F80CA8 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */; };
-		3E5CA7AE15E2E35A00F80CA8 /* Raleway Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */; };
 		3E6E03F816B83CFB0010AE08 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */; };
 		3E6E03FB16B83CFF0010AE08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FA16B83CFF0010AE08 /* Default@2x.png */; };
 		3E6E03FD16B83D050010AE08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FC16B83D050010AE08 /* Default.png */; };
@@ -38,6 +37,8 @@
 		3EB4D32D16B84373003F3061 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB4D32C16B84373003F3061 /* icon@2x.png */; };
 		3EB5B79215CEB38E002FDF23 /* TestDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5B79115CEB38E002FDF23 /* TestDragView.m */; };
 		3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82815D30F13002FDF23 /* selector@2x.png */; };
+		3EBEBDDD171F409100D5A4FF /* Infinity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EBEBDDC171F409100D5A4FF /* Infinity.ttf */; };
+		3EBEBDF1171F5ACC00D5A4FF /* Raleway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EBEBDF0171F5ACC00D5A4FF /* Raleway.ttf */; };
 		629F34098BD54BD8B6D4CD0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C380C5918F1A47D5AABC3895 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +77,6 @@
 		3E5CA79C15E2CBCA00F80CA8 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway Thin.ttf"; sourceTree = "<group>"; };
 		3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E6E03FA16B83CFF0010AE08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		3E6E03FC16B83D050010AE08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
@@ -87,6 +87,8 @@
 		3EB5B79015CEB38E002FDF23 /* TestDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDragView.h; sourceTree = "<group>"; };
 		3EB5B79115CEB38E002FDF23 /* TestDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDragView.m; sourceTree = "<group>"; };
 		3EB5B82815D30F13002FDF23 /* selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector@2x.png"; sourceTree = "<group>"; };
+		3EBEBDDC171F409100D5A4FF /* Infinity.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Infinity.ttf; sourceTree = "<group>"; };
+		3EBEBDF0171F5ACC00D5A4FF /* Raleway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raleway.ttf; sourceTree = "<group>"; };
 		C380C5918F1A47D5AABC3895 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,8 @@
 		3E31327B15BB13850061C661 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EBEBDF0171F5ACC00D5A4FF /* Raleway.ttf */,
+				3EBEBDDC171F409100D5A4FF /* Infinity.ttf */,
 				3EB4D32C16B84373003F3061 /* icon@2x.png */,
 				3EB4D32A16B8434A003F3061 /* icon.png */,
 				3E6E03FC16B83D050010AE08 /* Default.png */,
@@ -191,7 +195,6 @@
 				3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */,
 				3E8C2FD415EBD1DF00BC2EC4 /* price_sign.png */,
 				3E7D93E915E429B0009869B7 /* selector.png */,
-				3E5CA7AD15E2E35A00F80CA8 /* Raleway Thin.ttf */,
 				3E1C03C915DE3DA30077D9A0 /* big_arrow.png */,
 				3EB5B82815D30F13002FDF23 /* selector@2x.png */,
 				3E31327C15BB13AB0061C661 /* map_pointer.png */,
@@ -274,7 +277,6 @@
 				3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */,
 				3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */,
 				3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */,
-				3E5CA7AE15E2E35A00F80CA8 /* Raleway Thin.ttf in Resources */,
 				3E7D93EA15E429B0009869B7 /* selector.png in Resources */,
 				3E8C2FD515EBD1DF00BC2EC4 /* price_sign.png in Resources */,
 				3E6E03F816B83CFB0010AE08 /* Default-568h@2x.png in Resources */,
@@ -282,6 +284,8 @@
 				3E6E03FD16B83D050010AE08 /* Default.png in Resources */,
 				3EB4D32B16B8434A003F3061 /* icon.png in Resources */,
 				3EB4D32D16B84373003F3061 /* icon@2x.png in Resources */,
+				3EBEBDDD171F409100D5A4FF /* Infinity.ttf in Resources */,
+				3EBEBDF1171F5ACC00D5A4FF /* Raleway.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,11 +396,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PutAndTake/PutAndTake-Prefix.pch";
 				INFOPLIST_FILE = "PutAndTake/PutAndTake-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PutAndTake\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -409,11 +415,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PutAndTake/PutAndTake-Prefix.pch";
 				INFOPLIST_FILE = "PutAndTake/PutAndTake-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PutAndTake\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

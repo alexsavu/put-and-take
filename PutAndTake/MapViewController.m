@@ -100,6 +100,8 @@
 -(void)chooseLocation
 {
 //    NSLog(@"Current tag %d", [ViewController pressedTag]);
+    
+    //TODO check integrity before inserting the location !!!!!!!! (mthfkr)
     self.currentZone = [[NSMutableArray alloc] init];
     switch ([ViewController pressedTag]) {
         case 0:
