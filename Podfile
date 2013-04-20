@@ -1,3 +1,4 @@
-platform :ios
-pod 'RestKit',       '~> 0.10.1'
+platform :ios,                      '5.0'
+pod 'RestKit',                      '~> 0.20.0'
 pod 'KNSemiModalViewController' ,	'~>0.1'
+pod 'JSONKit',                      '~>1.5pre'

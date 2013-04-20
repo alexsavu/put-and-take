@@ -17,24 +17,40 @@
 
 @implementation MapViewController
 
-@synthesize mapView = _mapView;
+@synthesize theMapView = _theMapView;
 @synthesize sharedLocations = _sharedLocations;
 @synthesize currentZone = _currentZone;
 @synthesize currentZoneIndex = _currentZoneIndex;
 @synthesize arrayOfLocations = _arrayOfLocations;
 @synthesize annotation = _annotation;
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    
+- (void) viewDidAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
-    ServerData *data = [ServerData sharedInstance];
-    [data sendRequests];
+
+    [self asynchronousTaskWithCompletion:^{
+        NSLog(@"It finished: %@", self.sharedLocations);
+    }];
     
-    [self performSelector:@selector(getLocations) withObject:self afterDelay:0.3];
-    [self performSelector:@selector(lakesPositions) withObject:self afterDelay:0.4];
+//    [self performSelector:@selector(getLocations) withObject:self afterDelay:1.5];
+    [self performSelector:@selector(lakesPositions) withObject:self afterDelay:1.8];
     [self addBackButton];
     
+}
+
+- (void)asynchronousTaskWithCompletion:(void (^)(void))completion;
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // Some long running task you want on another thread
+        ServerData *data = [ServerData sharedInstance];
+        self.sharedLocations = [data sendRequests];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion();
+            }
+        });
+    });
 }
 
 - (void)addBackButton
@@ -53,11 +69,11 @@
     
     self.arrayOfLocations = [[NSMutableArray alloc] init];
     
-    self.mapView = [[ClusteringMapView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:self.mapView];
+    self.theMapView = [[ClusteringMapView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.theMapView];
     
     //Sets the map delegate to this object
-    [self.mapView setDelegate:self];
+    [self.theMapView setDelegate:self];
     
     //Core location manager
     locationManager = [[CLLocationManager alloc] init];
@@ -101,19 +117,20 @@
 {
 //    NSLog(@"Current tag %d", [ViewController pressedTag]);
     
-    //TODO check integrity before inserting the location !!!!!!!! (mthfkr)
-    self.currentZone = [[NSMutableArray alloc] init];
-    switch ([ViewController pressedTag]) {
-        case 0:
-            [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
-            self.currentZoneIndex = 0;
-            break;
-        case 1:
-            [self.currentZone addObject:[[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]];
-            self.currentZoneIndex = 1;
-            
-        default:
-            break;
+    if (self.sharedLocations != nil) {
+        self.currentZone = [[NSMutableArray alloc] init];
+        switch ([ViewController pressedTag]) {
+            case 0:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
+                self.currentZoneIndex = 0;
+                break;
+            case 1:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]];
+                self.currentZoneIndex = 1;
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -122,7 +139,7 @@
 {
     ServerData *data = [ServerData sharedInstance];
     self.sharedLocations = data.locations;
-    
+    NSLog(@"@@@@@@@: %i", [self.sharedLocations count]);
 //    NSLog(@"Latitude %@", [[[[self.sharedLocations valueForKey:@"awesomeLocations"] objectAtIndex:0] objectAtIndex:0] valueForKey:@"latitude"]);
     
 //    NSLog(@"!!!!!!!!!!!!!!!!!! %@", [[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]);
@@ -134,18 +151,11 @@
 
 
 - (void)lakesPositions {
-    
-//    for (id<MKAnnotation> annotation in self.mapView.annotations) {
-//        [self.mapView removeAnnotation:annotation];
-//    }
-    
     [self chooseLocation];
 //    NSLog(@"Current Zone %i", self.currentZoneIndex);
 //    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
     
     for (NSDictionary* row in [self.currentZone objectAtIndex:0]) {
-//        NSLog(@"ONE THING %@", row);
-        
         NSNumber *latitude = [row valueForKey:@"latitude"];
         NSNumber *longitude = [row valueForKey:@"longitude"];
         NSString *name = [row valueForKey:@"name"];
@@ -163,26 +173,26 @@
 //        [self zoomToFitMapAnnotations];
     }
     // Center out map on our locations
-    [self.mapView centerMapOnAnnotationSet:self.arrayOfLocations];
+    [self.theMapView centerMapOnAnnotationSet:self.arrayOfLocations];
     // Add our annotations to the map
-    [self.mapView addAnnotations:self.arrayOfLocations];
+    [self.theMapView addAnnotations:self.arrayOfLocations];
 }
 
 
 - (void)zoomToFitMapAnnotations {
     
-    if ([self.mapView.annotations count] == 0) return;
+    if ([self.theMapView.annotations count] == 0) return;
     
     int i = 0;
-    MKMapPoint points[[self.mapView.annotations count]];
+    MKMapPoint points[[self.theMapView.annotations count]];
     
     //build array of annotation points
-    for (id<MKAnnotation> annotation in [self.mapView annotations])
+    for (id<MKAnnotation> annotation in [self.theMapView annotations])
         points[i++] = MKMapPointForCoordinate(annotation.coordinate);
     
     MKPolygon *poly = [MKPolygon polygonWithPoints:points count:i];
     
-    [self.mapView setRegion:MKCoordinateRegionForMapRect([poly boundingMapRect]) animated:YES];
+    [self.theMapView setRegion:MKCoordinateRegionForMapRect([poly boundingMapRect]) animated:YES];
 }
 
 #pragma mark MapViewDelegate protocol methods

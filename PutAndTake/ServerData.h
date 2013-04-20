@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ServerData : NSObject<RKRequestDelegate>{
+@interface ServerData : NSObject{
 
     NSArray *locations;
 }
@@ -19,6 +19,6 @@
 
 +(ServerData* ) sharedInstance;
 
-- (void)sendRequests;
+-(NSArray *)sendRequests;
 
 @end

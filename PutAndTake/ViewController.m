@@ -62,11 +62,9 @@ static ViewController *singleton = nil;
     borderView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     
-    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
-    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
-    borderView.layer.shadowOpacity = 3;
-//    borderView.layer.shouldRasterize = YES;
-    borderView.frame = CGRectIntegral(borderView.frame);
+//    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
+//    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
+//    borderView.layer.shadowOpacity = 3;
     
     [self.view addSubview:borderView];
     
@@ -77,16 +75,9 @@ static ViewController *singleton = nil;
     [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
     self.nordjylland.tag = 20;
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.nordjylland setFont:[UIFont systemFontOfSize:38]];
+    [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     self.nordjylland.opaque = YES;
     [borderView addSubview:self.nordjylland];
-    
-    UIButton *test = [UIButton buttonWithType:UIButtonTypeCustom];
-    test.frame = CGRectMake(10, 200.f, 150.f, 56.f);
-    [test setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [test setTitle:@"TEEEST" forState:UIControlStateNormal];
-    [test.titleLabel setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:test];
     
     self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 46)];
     [self.vestjylland setBackgroundColor:[UIColor clearColor]];

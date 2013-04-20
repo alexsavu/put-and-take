@@ -45,8 +45,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [self.window addSubview: self.viewController.view];
     [self.navigationController setNavigationBarHidden:YES];
     self.viewController.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
-
-    
     
 //    //Instatiating the app's window
 //    
@@ -56,10 +54,15 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 //    self.window.rootViewController = self.mapViewController;
 //    [self.window addSubview: self.mapViewController.view];
     
-    
-    //Initializing RK with the base URL
-    
-    [RKClient clientWithBaseURLString:@"http://localhost:1337/areas"];
+//    //let AFNetworking manage the activity indicator
+//    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+//    
+//    //Initializing RK with the base URL
+//    NSURL *baseURL = [NSURL URLWithString:@"http://184.72.245.59:5000"];
+//    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+//    
+//    //we want to work with JSON-Data
+//    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
     
     [self.window makeKeyAndVisible];
     

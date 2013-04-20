@@ -8,7 +8,7 @@
 
 #import "ServerData.h"
 #import "MapViewController.h"
-#import <RestKit/RKJSONParserJSONKit.h>
+#import "JSONKit.h"
 
 
 @implementation ServerData
@@ -26,30 +26,28 @@ static ServerData *singleton = nil;
 
 
 
-- (void)sendRequests {
-    // Perform a simple HTTP GET and call me back with the results
-    [[RKClient sharedClient] get:@"/" delegate:self];
-}
-
-
-#pragma mark - Delegate
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
-{
-//    if ([response isOK]) {
-        // Success! Let's take a look at the data
-        RKJSONParserJSONKit *thing = [RKJSONParserJSONKit new];
-        self.locations = [thing objectFromString:[response bodyAsString] error:nil];
+-(NSArray *)sendRequests {
+// Perform a simple HTTP GET and call me back with the results
+//    [[RKClient sharedClient] get:@"/" delegate:self];
+    
+    NSURL *url = [NSURL URLWithString:@"http://184.72.245.59:5000/areas"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+//        NSLog(@"App.net Global Stream: %@", JSON);
+        self.locations = (NSArray *) JSON;
         
-//        NSLog(@"Retrieved response: %@", [response bodyAsString]);
-//        NSLog(@"Locations : %@", self.locations );
-
-//    }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError *error, id JSON){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Errorrrrr"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+    [operation start];
+    return self.locations;
 }
 
--(void)request:(RKRequest*)requestdidFailLoadWithError:(NSError*)error{
-    NSLog(@"Ohno!Error:%@",[error localizedDescription]);
-}
 
 -(NSArray *) returnLocations:(MapViewController *)sender
 {

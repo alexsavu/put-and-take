@@ -14,13 +14,11 @@
 @class ClusteredAnnotation;
 
 @interface MapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>{
-    
-    ClusteringMapView *mapView;
     CLLocationManager *locationManager;
 }
 
 @property (nonatomic, strong) ClusteredAnnotation *annotation;
-@property (nonatomic,strong) ClusteringMapView *mapView;
+@property (nonatomic,strong) ClusteringMapView *theMapView;
 @property (nonatomic,strong) NSArray *sharedLocations;
 @property (nonatomic,strong) NSMutableArray *currentZone;
 @property (nonatomic) NSInteger currentZoneIndex;
