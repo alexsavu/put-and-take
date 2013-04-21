@@ -26,31 +26,19 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
-
-    [self asynchronousTaskWithCompletion:^{
-        NSLog(@"It finished: %@", self.sharedLocations);
+    
+    ServerData *data = [ServerData sharedInstance];
+    [data sendRequestsWithCompletionBlock:^{
+        self.sharedLocations = data.locations;
+        NSLog(@"Za location: %@", self.sharedLocations);
+    } failure:^{
+        NSLog(@"WHYYYYY");
     }];
     
 //    [self performSelector:@selector(getLocations) withObject:self afterDelay:1.5];
     [self performSelector:@selector(lakesPositions) withObject:self afterDelay:1.8];
     [self addBackButton];
     
-}
-
-- (void)asynchronousTaskWithCompletion:(void (^)(void))completion;
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        // Some long running task you want on another thread
-        ServerData *data = [ServerData sharedInstance];
-        self.sharedLocations = [data sendRequests];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (completion) {
-                completion();
-            }
-        });
-    });
 }
 
 - (void)addBackButton

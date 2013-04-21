@@ -24,9 +24,9 @@ static ServerData *singleton = nil;
     return singleton;
 }
 
-
-
--(NSArray *)sendRequests {
+-(void)sendRequestsWithCompletionBlock:(void (^)(void))completion
+                                failure:(void (^)(void))failure
+{
 // Perform a simple HTTP GET and call me back with the results
 //    [[RKClient sharedClient] get:@"/" delegate:self];
     
@@ -36,8 +36,15 @@ static ServerData *singleton = nil;
 //        NSLog(@"App.net Global Stream: %@", JSON);
         self.locations = (NSArray *) JSON;
         
+        if (completion) {
+            completion();
+        }
+        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError *error, id JSON){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Errorrrrr"
+        if (failure) {
+            failure();
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ups. There was an error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
@@ -45,7 +52,6 @@ static ServerData *singleton = nil;
         [alert show];
     }];
     [operation start];
-    return self.locations;
 }
 
 

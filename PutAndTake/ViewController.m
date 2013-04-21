@@ -13,7 +13,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GANTracker.h"
 
+@interface ViewController()
+
+@property (nonatomic, retain) CAShapeLayer *pathLayer;
+@property (nonatomic, retain) CALayer *animationLayer;
+
+@end
+
 @implementation ViewController
+@synthesize pathLayer = _pathLayer;
+@synthesize animationLayer = _animationLayer;
 @synthesize myButton = _myButton;
 @synthesize nordjylland = _nordjylland;
 @synthesize vestjylland = _ostjylland;
@@ -41,26 +50,25 @@ static ViewController *singleton = nil;
     _pressedTag = pressedTag;
 }
 
-//+(ViewController*) init {
-//    [super init];
-//    NSLog(@"custom init");
-//    return [ViewController sharedInstance];
-//}
-
-- (void)viewDidLoad
-{
-        
+- (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
     [[GANTracker sharedTracker] trackPageview:@"/menu_view" withError:nil];
-    
     
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake( (int) self.view.frame.origin.x + 30.0,(int) self.view.frame.origin.y + 35.0,(int) self.view.frame.size.width - 60.0,(int) self.view.frame.size.height - 130.0)];
     borderView.layer.cornerRadius = 1.5;
     borderView.layer.borderWidth = 3.5;
     borderView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
+    
+    self.animationLayer = [CALayer layer];
+    self.animationLayer.frame = CGRectMake(20.0f, 64.0f,
+                                           CGRectGetWidth(borderView.layer.bounds) ,
+                                           CGRectGetHeight(borderView.layer.bounds));
+    [borderView.layer addSublayer:self.animationLayer];
+    
+//    [self setupDrawingLayer];
+//    [self startAnimation];
     
 //    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
 //    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
@@ -92,6 +100,57 @@ static ViewController *singleton = nil;
     self.testDrag.parentView = self.view;
     [self.view addSubview:self.testDrag];
     
+}
+
+#pragma mark Animation
+
+- (void) setupDrawingLayer
+{
+    if (self.pathLayer != nil) {
+        [self.pathLayer removeFromSuperlayer];
+        self.pathLayer = nil;
+    }
+    
+    CGRect pathRect = CGRectInset(self.animationLayer.bounds, 100.0f, 100.0f);
+    CGPoint bottomLeft 	= CGPointMake(CGRectGetMinX(pathRect), CGRectGetMinY(pathRect));
+    CGPoint topLeft		= CGPointMake(CGRectGetMinX(pathRect), CGRectGetMinY(pathRect) + CGRectGetHeight(pathRect) * 2.0f/3.0f);
+    CGPoint bottomRight = CGPointMake(CGRectGetMaxX(pathRect), CGRectGetMinY(pathRect));
+    CGPoint topRight	= CGPointMake(CGRectGetMaxX(pathRect), CGRectGetMinY(pathRect) + CGRectGetHeight(pathRect) * 2.0f/3.0f);
+    CGPoint roofTip		= CGPointMake(CGRectGetMidX(pathRect), CGRectGetMaxY(pathRect));
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:bottomLeft];
+    [path addLineToPoint:topLeft];
+    [path addLineToPoint:roofTip];
+    [path addLineToPoint:topRight];
+    [path addLineToPoint:topLeft];
+    [path addLineToPoint:bottomRight];
+    [path addLineToPoint:topRight];
+    [path addLineToPoint:bottomLeft];
+    [path addLineToPoint:bottomRight];
+    
+    CAShapeLayer *pathLayer = [CAShapeLayer layer];
+    pathLayer.frame = self.animationLayer.bounds;
+    pathLayer.bounds = pathRect;
+    pathLayer.geometryFlipped = YES;
+    pathLayer.path = path.CGPath;
+    pathLayer.strokeColor = [[UIColor blackColor] CGColor];
+    pathLayer.fillColor = nil;
+    pathLayer.lineWidth = 10.0f;
+    pathLayer.lineJoin = kCALineJoinBevel;
+    
+    [self.animationLayer addSublayer:pathLayer];
+    
+    self.pathLayer = pathLayer;
+}
+
+- (void) startAnimation{
+    [self.pathLayer removeAllAnimations];
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 10.0;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
 
 

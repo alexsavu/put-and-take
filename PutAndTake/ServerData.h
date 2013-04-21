@@ -19,6 +19,7 @@
 
 +(ServerData* ) sharedInstance;
 
--(NSArray *)sendRequests;
+-(void)sendRequestsWithCompletionBlock:(void (^)(void))completion
+                               failure:(void (^)(void))failure;
 
 @end
