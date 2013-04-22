@@ -21,7 +21,7 @@
     if (self) {
         // Initialization code
         self.userInteractionEnabled = YES;
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selector.png"]];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selector the good one.png"]];
         
     }
     
@@ -31,21 +31,19 @@
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
     CGPoint pt = [[touches  anyObject] locationInView:self.parentView];
     
-    //NSLog(@"dragging %f, %f", pt.x, pt.y);
+    NSLog(@"dragging %f, %f", pt.x, pt.y);
     
     if(self.lastPoint.x != 0 && self.lastPoint.y != 0) {
         CGRect myFrame = self.frame;
         
-    if(pt.y < self.lastPoint.y) {
-        myFrame.origin.y = (myFrame.origin.y) - (self.lastPoint.y - pt.y);
-    } else {
-        myFrame.origin.y = (myFrame.origin.y) + (pt.y - self.lastPoint.y);
-    }
-        
-        
-        self.frame = myFrame;
-        self.lastPoint = pt;
-    } else {
+        if(pt.y < self.lastPoint.y) {
+            myFrame.origin.y = (myFrame.origin.y) - (self.lastPoint.y - pt.y);
+        }else{
+            myFrame.origin.y = (myFrame.origin.y) + (pt.y - self.lastPoint.y);
+        }
+    self.frame = myFrame;
+    self.lastPoint = pt;
+    }else {
         self.lastPoint = pt;
     }
 
@@ -61,10 +59,8 @@
     
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     ViewController *oneInstance = [ViewController sharedInstance];
-    
     [UIView beginAnimations:nil context:nil];
     CGRect newFrame = self.frame;
     
@@ -102,7 +98,7 @@
     switch ((int)newFrame.origin.y) {
         case 100:
         {
-            oneInstance.nordjylland.textColor = [UIColor whiteColor];
+            oneInstance.nordjylland.textColor = [UIColor colorWithRed:0 green:0.121 blue:0.243 alpha:1];;
             [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
             [ViewController setPressedTag:0];
             
@@ -121,7 +117,7 @@
             break;
             
         case 150:
-            oneInstance.vestjylland.textColor = [UIColor whiteColor];
+            oneInstance.vestjylland.textColor = [UIColor colorWithRed:0 green:0.121 blue:0.243 alpha:1];;
             [[ViewController sharedInstance] performSelector:@selector(moveNextView) withObject:self afterDelay:0.6];
             [ViewController setPressedTag:1];
             break;

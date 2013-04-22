@@ -23,9 +23,6 @@
 @implementation ViewController
 @synthesize pathLayer = _pathLayer;
 @synthesize animationLayer = _animationLayer;
-@synthesize myButton = _myButton;
-@synthesize nordjylland = _nordjylland;
-@synthesize vestjylland = _ostjylland;
 
 @synthesize touchPoint = _touchPoint;
 @synthesize testDrag = _testDrag;
@@ -55,7 +52,7 @@ static ViewController *singleton = nil;
 	// Do any additional setup after loading the view, typically from a nib.
     [[GANTracker sharedTracker] trackPageview:@"/menu_view" withError:nil];
     
-    UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake( (int) self.view.frame.origin.x + 30.0,(int) self.view.frame.origin.y + 35.0,(int) self.view.frame.size.width - 60.0,(int) self.view.frame.size.height - 130.0)];
+    UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake( (int) self.view.frame.origin.x + 25.0,(int) self.view.frame.origin.y + 35.0,(int) self.view.frame.size.width - 50.0,(int) self.view.frame.size.height - 130.0)];
     borderView.layer.cornerRadius = 1.5;
     borderView.layer.borderWidth = 3.5;
     borderView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
@@ -76,7 +73,9 @@ static ViewController *singleton = nil;
     
     [self.view addSubview:borderView];
     
-    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 45, 200, 46)];
+    NSLog(@"Borderview size: %f", borderView.frame.size.width);
+    
+    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 46, 200, 46)];
     [self.nordjylland setBackgroundColor:[UIColor clearColor]];
     self.nordjylland.text = @"Nordjylland";
     [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
@@ -87,7 +86,7 @@ static ViewController *singleton = nil;
     self.nordjylland.opaque = YES;
     [borderView addSubview:self.nordjylland];
     
-    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 200, 46)];
+    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 101, 200, 46)];
     [self.vestjylland setBackgroundColor:[UIColor clearColor]];
     self.vestjylland.text = @"Vestjylland";
     self.vestjylland.tag = 20;
@@ -95,6 +94,15 @@ static ViewController *singleton = nil;
     [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     //self.vestjylland.opaque = YES;
     [borderView addSubview:self.vestjylland];
+    
+    self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 156, 240, 46)];
+    [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
+    self.sonderjylland.text = @"Sønderjylland";
+    self.sonderjylland.tag = 20;
+    self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    //self.vestjylland.opaque = YES;
+    [borderView addSubview:self.sonderjylland];
 
     self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
     self.testDrag.parentView = self.view;
@@ -174,9 +182,7 @@ static ViewController *singleton = nil;
         [self.testDrag repositionWith:point.y];
 
     }
-    
 }
-
 
 - (void)viewDidUnload
 {

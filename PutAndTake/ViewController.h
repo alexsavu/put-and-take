@@ -12,12 +12,11 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, strong) UIButton *myButton;
-@property (nonatomic, strong) UILabel *nordjylland;
-@property (nonatomic, strong) UILabel *vestjylland;
-
 @property (nonatomic) int touchPoint;
 @property (nonatomic, strong) TestDragView *testDrag;
+@property (nonatomic, strong) UILabel *nordjylland;
+@property (nonatomic, strong) UILabel *vestjylland;
+@property (nonatomic, strong) UILabel *sonderjylland;
 
 +(NSInteger) pressedTag;
 +(void) setPressedTag:(NSInteger) pressedTag;
