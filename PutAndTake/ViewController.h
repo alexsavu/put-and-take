@@ -15,8 +15,11 @@
 @property (nonatomic) int touchPoint;
 @property (nonatomic, strong) TestDragView *testDrag;
 @property (nonatomic, strong) UILabel *nordjylland;
+@property (nonatomic, strong) UILabel *oestjylland;
 @property (nonatomic, strong) UILabel *vestjylland;
+@property (nonatomic, strong) UILabel *sjaelland;
 @property (nonatomic, strong) UILabel *sonderjylland;
+@property (nonatomic, strong) UILabel *fyn;
 
 +(NSInteger) pressedTag;
 +(void) setPressedTag:(NSInteger) pressedTag;

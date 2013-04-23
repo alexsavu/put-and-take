@@ -75,7 +75,7 @@ static ViewController *singleton = nil;
     
     NSLog(@"Borderview size: %f", borderView.frame.size.width);
     
-    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 46, 200, 46)];
+    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
     [self.nordjylland setBackgroundColor:[UIColor clearColor]];
     self.nordjylland.text = @"Nordjylland";
     [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
@@ -83,26 +83,47 @@ static ViewController *singleton = nil;
     self.nordjylland.tag = 20;
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    self.nordjylland.opaque = YES;
     [borderView addSubview:self.nordjylland];
     
-    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 101, 200, 46)];
+    self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 95, 200, 46)];
+    [self.oestjylland setBackgroundColor:[UIColor clearColor]];
+    self.oestjylland.text = @"Østjylland";
+    self.oestjylland.tag = 20;
+    self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    [borderView addSubview:self.oestjylland];
+    
+    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 145, 240, 46)];
     [self.vestjylland setBackgroundColor:[UIColor clearColor]];
     self.vestjylland.text = @"Vestjylland";
     self.vestjylland.tag = 20;
     self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    //self.vestjylland.opaque = YES;
     [borderView addSubview:self.vestjylland];
     
-    self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 156, 240, 46)];
+    self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 195, 240, 46)];
+    [self.sjaelland setBackgroundColor:[UIColor clearColor]];
+    self.sjaelland.text = @"Sjælland";
+    self.sjaelland.tag = 20;
+    self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    [borderView addSubview:self.sjaelland];
+    
+    self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 245, 240, 46)];
     [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
     self.sonderjylland.text = @"Sønderjylland";
     self.sonderjylland.tag = 20;
     self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    //self.vestjylland.opaque = YES;
     [borderView addSubview:self.sonderjylland];
+    
+    self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, 240, 46)];
+    [self.fyn setBackgroundColor:[UIColor clearColor]];
+    self.fyn.text = @"Fyn";
+    self.fyn.tag = 20;
+    self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
+    [borderView addSubview:self.fyn];
 
     self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
     self.testDrag.parentView = self.view;
@@ -168,21 +189,21 @@ static ViewController *singleton = nil;
     [self.navigationController pushViewController:mapvViewController animated:YES];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    
-    // Get the specific point that was touched
-    CGPoint point = [touch locationInView:self.view];
-    NSLog(@"Y Location: %f",point.y);
-    self.touchPoint = point.y;
-
-    if (point.y > 100 && point.y < 140) {
-     
-        [self.testDrag repositionWith:point.y];
-
-    }
-}
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    
+//    // Get the specific point that was touched
+//    CGPoint point = [touch locationInView:self.view];
+//    NSLog(@"Y Location: %f",point.y);
+//    self.touchPoint = point.y;
+//
+//    if (point.y > 100 && point.y < 140) {
+//     
+//        [self.testDrag repositionWith:point.y];
+//
+//    }
+//}
 
 - (void)viewDidUnload
 {

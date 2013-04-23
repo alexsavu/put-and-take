@@ -30,15 +30,12 @@
     ServerData *data = [ServerData sharedInstance];
     [data sendRequestsWithCompletionBlock:^{
         self.sharedLocations = data.locations;
+        [self lakesPositions];
         NSLog(@"Za location: %@", self.sharedLocations);
     } failure:^{
         NSLog(@"WHYYYYY");
     }];
-    
-//    [self performSelector:@selector(getLocations) withObject:self afterDelay:1.5];
-    [self performSelector:@selector(lakesPositions) withObject:self afterDelay:1.8];
     [self addBackButton];
-    
 }
 
 - (void)addBackButton
@@ -79,7 +76,7 @@
 //    [locationManager startUpdatingLocation];
     
     //Shows the blue annotation
-//    [self.mapView setShowsUserLocation:YES];
+//    [self.theMapView setShowsUserLocation:YES];
 
 }
 
@@ -110,12 +107,25 @@
         switch ([ViewController pressedTag]) {
             case 0:
                 [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
-                self.currentZoneIndex = 0;
                 break;
             case 1:
                 [self.currentZone addObject:[[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]];
-                self.currentZoneIndex = 1;
-                
+                break;
+            case 2:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:2] valueForKey:@"locations"]];
+                break;
+            case 3:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:3] valueForKey:@"locations"]];
+                break;
+            case 4:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:4] valueForKey:@"locations"]];
+                break;
+            case 5:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:5] valueForKey:@"locations"]];
+                break;
+            case 6:
+                [self.currentZone addObject:[[self.sharedLocations objectAtIndex:6] valueForKey:@"locations"]];
+                break;
             default:
                 break;
         }
@@ -155,13 +165,15 @@
         coordinate.latitude = latitude.doubleValue;
         coordinate.longitude = longitude.doubleValue;
         self.annotation = [[ClusteredAnnotation alloc] initWithCoordinate:coordinate andTitle:name andPrice:price andPhone:phone andAddress:address];
-//        self.annotation.title = name;
+        self.annotation.title = name;
         [self.arrayOfLocations addObject:self.annotation];
 //        [self.mapView addAnnotation:annotation];
 //        [self zoomToFitMapAnnotations];
     }
     // Center out map on our locations
-    [self.theMapView centerMapOnAnnotationSet:self.arrayOfLocations];
+    if ([self.arrayOfLocations count] > 0) {
+        [self.theMapView centerMapOnAnnotationSet:self.arrayOfLocations];
+    }
     // Add our annotations to the map
     [self.theMapView addAnnotations:self.arrayOfLocations];
 }
