@@ -37,7 +37,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-    self.viewController = [ViewController sharedInstance];
+    self.viewController = [[ViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
 //    self.window.rootViewController = self.viewController;
     [self.window setRootViewController:self.navigationController];

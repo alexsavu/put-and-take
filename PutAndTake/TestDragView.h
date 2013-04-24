@@ -15,6 +15,6 @@
 @property (nonatomic, retain) UIView *parentView;
  
 -(id)initWithFrame:(CGRect)frame;
--(void)repositionWith: (float)y;
+//-(void)repositionWith: (float)y;
 
 @end

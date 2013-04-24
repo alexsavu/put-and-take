@@ -27,26 +27,6 @@
 @synthesize touchPoint = _touchPoint;
 @synthesize testDrag = _testDrag;
 
-static NSInteger _pressedTag = 0;
-
-static ViewController *singleton = nil;
-
-+(ViewController *) sharedInstance
-{
-    if (singleton == nil) {
-        singleton = [[ViewController alloc] init];
-    }
-    return singleton;
-}
-
-+(NSInteger) pressedTag {
-    return _pressedTag;
-}
-
-+(void) setPressedTag:(NSInteger) pressedTag {
-    _pressedTag = pressedTag;
-}
-
 - (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -67,20 +47,13 @@ static ViewController *singleton = nil;
 //    [self setupDrawingLayer];
 //    [self startAnimation];
     
-//    borderView.layer.shadowOffset = CGSizeMake(0, 0.8);
-//    borderView.layer.shadowColor = [UIColor grayColor].CGColor;
-//    borderView.layer.shadowOpacity = 3;
-    
     [self.view addSubview:borderView];
-    
-    NSLog(@"Borderview size: %f", borderView.frame.size.width);
     
     self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
     [self.nordjylland setBackgroundColor:[UIColor clearColor]];
     self.nordjylland.text = @"Nordjylland";
     [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
     [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
-    self.nordjylland.tag = 20;
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.nordjylland];
@@ -88,7 +61,6 @@ static ViewController *singleton = nil;
     self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 95, 200, 46)];
     [self.oestjylland setBackgroundColor:[UIColor clearColor]];
     self.oestjylland.text = @"Østjylland";
-    self.oestjylland.tag = 20;
     self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.oestjylland];
@@ -96,7 +68,6 @@ static ViewController *singleton = nil;
     self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 145, 240, 46)];
     [self.vestjylland setBackgroundColor:[UIColor clearColor]];
     self.vestjylland.text = @"Vestjylland";
-    self.vestjylland.tag = 20;
     self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.vestjylland];
@@ -104,7 +75,6 @@ static ViewController *singleton = nil;
     self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 195, 240, 46)];
     [self.sjaelland setBackgroundColor:[UIColor clearColor]];
     self.sjaelland.text = @"Sjælland";
-    self.sjaelland.tag = 20;
     self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.sjaelland];
@@ -112,7 +82,6 @@ static ViewController *singleton = nil;
     self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 245, 240, 46)];
     [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
     self.sonderjylland.text = @"Sønderjylland";
-    self.sonderjylland.tag = 20;
     self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.sonderjylland];
@@ -120,15 +89,88 @@ static ViewController *singleton = nil;
     self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, 240, 46)];
     [self.fyn setBackgroundColor:[UIColor clearColor]];
     self.fyn.text = @"Fyn";
-    self.fyn.tag = 20;
     self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
     [borderView addSubview:self.fyn];
 
     self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
-    self.testDrag.parentView = self.view;
+    self.testDrag.parentView = self.view;;
     [self.view addSubview:self.testDrag];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeFontAcordingly:) name:@"AnimationDone" object:nil];
+}
+
+#pragma mark Notification method
+
+-(void)changeFontAcordingly:(NSNotification *)notification{
+    CGPoint frame = CGPointFromString([notification object]);
+    NSLog(@"Frame after animation is done: %f", frame.y);
+    self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+    NSNumber *pressedButton = nil;
+    switch ((int)frame.y) {
+        case 100:{
+            self.nordjylland.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:0];;
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Nordjylland" withError:&error];
+        }
+            break;
+        case 150:{
+            self.oestjylland.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:1];
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Østjylland" withError:&error];
+        }
+            break;
+        case 200:{
+            self.vestjylland.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:2];
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Vestjylland" withError:&error];
+        }
+            break;
+        case 250:{
+            self.sjaelland.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:3];
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Sjaelland" withError:&error];
+        }
+            break;
+        case 300:{
+            self.sonderjylland.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:4];
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Sønderjylland" withError:&error];
+        }
+            break;
+        case 350:{
+            self.fyn.textColor = [UIColor redColor];
+            pressedButton = [NSNumber numberWithInt:5];
+            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+            NSError *error;
+            [[GANTracker sharedTracker] trackPageview:@"Fyn" withError:&error];
+        }
+            break;
+        default:
+            self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+            self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+
+            break;
+    }
 }
 
 #pragma mark Animation
@@ -169,7 +211,6 @@ static ViewController *singleton = nil;
     pathLayer.lineJoin = kCALineJoinBevel;
     
     [self.animationLayer addSublayer:pathLayer];
-    
     self.pathLayer = pathLayer;
 }
 
@@ -182,28 +223,11 @@ static ViewController *singleton = nil;
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
 
-
--(void)moveNextView
-{
+-(void)moveNextView:(NSNumber *)pressedButton{
     MapViewController *mapvViewController = [[MapViewController alloc] init];
+    mapvViewController.buttonPressed = [pressedButton intValue];
     [self.navigationController pushViewController:mapvViewController animated:YES];
 }
-
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    
-//    // Get the specific point that was touched
-//    CGPoint point = [touch locationInView:self.view];
-//    NSLog(@"Y Location: %f",point.y);
-//    self.touchPoint = point.y;
-//
-//    if (point.y > 100 && point.y < 140) {
-//     
-//        [self.testDrag repositionWith:point.y];
-//
-//    }
-//}
 
 - (void)viewDidUnload
 {

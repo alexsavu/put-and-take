@@ -14,6 +14,13 @@
 #import "UIViewController+KNSemiModal.h"
 #import "ClusteredAnnotation.h"
 #import "ClusteringMapView.h"
+#import "TestDragView.h"
+
+@interface MapViewController()
+
+@property (nonatomic, strong) TestDragView *testDrag;
+
+@end
 
 @implementation MapViewController
 
@@ -87,24 +94,14 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(void)moveBack{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)moveBack
-{
-    ViewController *viewController = [ViewController sharedInstance];
-    [self.navigationController popToViewController:viewController animated:YES];
-}
-
--(void)chooseLocation
-{
-//    NSLog(@"Current tag %d", [ViewController pressedTag]);
-    
+-(void)chooseLocation{
     if (self.sharedLocations != nil) {
         self.currentZone = [[NSMutableArray alloc] init];
-        switch ([ViewController pressedTag]) {
+        switch (self.buttonPressed) {
             case 0:
                 [self.currentZone addObject:[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]];
                 break;
@@ -132,23 +129,12 @@
     }
 }
 
-
--(void) getLocations
-{
+-(void) getLocations{
     ServerData *data = [ServerData sharedInstance];
     self.sharedLocations = data.locations;
-    NSLog(@"@@@@@@@: %i", [self.sharedLocations count]);
-//    NSLog(@"Latitude %@", [[[[self.sharedLocations valueForKey:@"awesomeLocations"] objectAtIndex:0] objectAtIndex:0] valueForKey:@"latitude"]);
-    
-//    NSLog(@"!!!!!!!!!!!!!!!!!! %@", [[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"]);
-//    NSLog(@"?????????????????? %@", [[self.sharedLocations objectAtIndex:1] valueForKey:@"locations"]);
-
-//    NSLog(@"Location from the viewcontroller: %@",[[self.sharedLocations valueForKey:@"awesomeLocations"] valueForKey:@"latitude"]);
-    
 }
 
-
-- (void)lakesPositions {
+-(void)lakesPositions {
     [self chooseLocation];
 //    NSLog(@"Current Zone %i", self.currentZoneIndex);
 //    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
@@ -180,7 +166,6 @@
 
 
 - (void)zoomToFitMapAnnotations {
-    
     if ([self.theMapView.annotations count] == 0) return;
     
     int i = 0;
@@ -218,7 +203,6 @@
         annotationView.image=[UIImage imageNamed:@"map_pointer.png"];
         return annotationView;
     }
-    
     return nil;    
 }
 
@@ -236,10 +220,6 @@
         detailsViewController.phone = [(ClusteredAnnotation*)[view annotation] phone];
         detailsViewController.address = [(ClusteredAnnotation*)[view annotation] address];
     }
-    
-//    NSLog(@"infoDarkButton for longitude: %f and latitude: %f",
-//          [(MapPoint*)[view annotation] coordinate].longitude,
-//          [(MapPoint*)[view annotation] coordinate].latitude);
 }
 
 

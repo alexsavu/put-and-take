@@ -21,10 +21,6 @@
 @property (nonatomic, strong) UILabel *sonderjylland;
 @property (nonatomic, strong) UILabel *fyn;
 
-+(NSInteger) pressedTag;
-+(void) setPressedTag:(NSInteger) pressedTag;
-+(ViewController *) sharedInstance;
-
 -(void) moveNextView;
 
 

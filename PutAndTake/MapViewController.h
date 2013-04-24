@@ -23,6 +23,7 @@
 @property (nonatomic,strong) NSMutableArray *currentZone;
 @property (nonatomic) NSInteger currentZoneIndex;
 @property (nonatomic, strong) NSMutableArray *arrayOfLocations;
+@property (nonatomic, assign) int buttonPressed;
 
 
 - (void)getLocations;
