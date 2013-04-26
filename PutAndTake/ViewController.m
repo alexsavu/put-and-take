@@ -32,6 +32,14 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [[GANTracker sharedTracker] trackPageview:@"/menu_view" withError:nil];
     
+    
+    [self layoutLabels];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeFontAcordingly:) name:@"AnimationDone" object:nil];
+}
+
+-(void)layoutLabels{
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake( (int) self.view.frame.origin.x + 25.0,(int) self.view.frame.origin.y + 35.0,(int) self.view.frame.size.width - 50.0,(int) self.view.frame.size.height - 130.0)];
     borderView.layer.cornerRadius = 1.5;
     borderView.layer.borderWidth = 3.5;
@@ -44,60 +52,110 @@
                                            CGRectGetHeight(borderView.layer.bounds));
     [borderView.layer addSublayer:self.animationLayer];
     
-//    [self setupDrawingLayer];
-//    [self startAnimation];
+    //    [self setupDrawingLayer];
+    //    [self startAnimation];
     
     [self.view addSubview:borderView];
-    
-    self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
-    [self.nordjylland setBackgroundColor:[UIColor clearColor]];
-    self.nordjylland.text = @"Nordjylland";
-    [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
-    [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
-    self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.nordjylland];
-    
-    self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 95, 200, 46)];
-    [self.oestjylland setBackgroundColor:[UIColor clearColor]];
-    self.oestjylland.text = @"Østjylland";
-    self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.oestjylland];
-    
-    self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 145, 240, 46)];
-    [self.vestjylland setBackgroundColor:[UIColor clearColor]];
-    self.vestjylland.text = @"Vestjylland";
-    self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.vestjylland];
-    
-    self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 195, 240, 46)];
-    [self.sjaelland setBackgroundColor:[UIColor clearColor]];
-    self.sjaelland.text = @"Sjælland";
-    self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.sjaelland];
-    
-    self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 245, 240, 46)];
-    [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
-    self.sonderjylland.text = @"Sønderjylland";
-    self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.sonderjylland];
-    
-    self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, 240, 46)];
-    [self.fyn setBackgroundColor:[UIColor clearColor]];
-    self.fyn.text = @"Fyn";
-    self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-    [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
-    [borderView addSubview:self.fyn];
-
-    self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
-    self.testDrag.parentView = self.view;;
-    [self.view addSubview:self.testDrag];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeFontAcordingly:) name:@"AnimationDone" object:nil];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    if (screenBounds.size.height == 480) {
+        // iphone 4,4s screen
+        self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, 200, 46)];
+        [self.nordjylland setBackgroundColor:[UIColor clearColor]];
+        self.nordjylland.text = @"Nordjylland";
+        [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
+        [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
+        self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.nordjylland];
+        
+        self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 46)];
+        [self.oestjylland setBackgroundColor:[UIColor clearColor]];
+        self.oestjylland.text = @"Østjylland";
+        self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.oestjylland];
+        
+        self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 130, 240, 46)];
+        [self.vestjylland setBackgroundColor:[UIColor clearColor]];
+        self.vestjylland.text = @"Vestjylland";
+        self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.vestjylland];
+        
+        self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 180, 240, 46)];
+        [self.sjaelland setBackgroundColor:[UIColor clearColor]];
+        self.sjaelland.text = @"Sjælland";
+        self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.sjaelland];
+        
+        self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 230, 240, 46)];
+        [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
+        self.sonderjylland.text = @"Sønderjylland";
+        self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.sonderjylland];
+        
+        self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 280, 240, 46)];
+        [self.fyn setBackgroundColor:[UIColor clearColor]];
+        self.fyn.text = @"Fyn";
+        self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.fyn];
+        
+        self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+        self.testDrag.parentView = self.view;;
+        [self.view addSubview:self.testDrag];
+    }else if (screenBounds.size.height == 568){
+        //iphone 5 sceen
+        self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
+        [self.nordjylland setBackgroundColor:[UIColor clearColor]];
+        self.nordjylland.text = @"Nordjylland";
+        [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
+        [self.nordjylland setFrame:CGRectIntegral(self.nordjylland.frame)];
+        self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.nordjylland];
+        
+        self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 95, 200, 46)];
+        [self.oestjylland setBackgroundColor:[UIColor clearColor]];
+        self.oestjylland.text = @"Østjylland";
+        self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.oestjylland];
+        
+        self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 145, 240, 46)];
+        [self.vestjylland setBackgroundColor:[UIColor clearColor]];
+        self.vestjylland.text = @"Vestjylland";
+        self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.vestjylland];
+        
+        self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 195, 240, 46)];
+        [self.sjaelland setBackgroundColor:[UIColor clearColor]];
+        self.sjaelland.text = @"Sjælland";
+        self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.sjaelland];
+        
+        self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 245, 240, 46)];
+        [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
+        self.sonderjylland.text = @"Sønderjylland";
+        self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.sonderjylland];
+        
+        self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, 240, 46)];
+        [self.fyn setBackgroundColor:[UIColor clearColor]];
+        self.fyn.text = @"Fyn";
+        self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+        [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
+        [borderView addSubview:self.fyn];
+        
+        self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+        self.testDrag.parentView = self.view;;
+        [self.view addSubview:self.testDrag];
+    }
 }
 
 #pragma mark Notification method
@@ -112,65 +170,133 @@
     self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     NSNumber *pressedButton = nil;
-    switch ((int)frame.y) {
-        case 100:{
-            self.nordjylland.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:0];;
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Nordjylland" withError:&error];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    if (screenBounds.size.height == 480) {
+        // iphone 4,4s screen
+        switch ((int)frame.y) {
+            case 82:{
+                self.nordjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:0];;
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Nordjylland" withError:&error];
+            }
+                break;
+            case 132:{
+                self.oestjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:1];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Østjylland" withError:&error];
+            }
+                break;
+            case 182:{
+                self.vestjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:2];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Vestjylland" withError:&error];
+            }
+                break;
+            case 232:{
+                self.sjaelland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:3];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Sjaelland" withError:&error];
+            }
+                break;
+            case 282:{
+                self.sonderjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:4];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Sønderjylland" withError:&error];
+            }
+                break;
+            case 332:{
+                self.fyn.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:5];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Fyn" withError:&error];
+            }
+                break;
+            default:
+                self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                
+                break;
         }
-            break;
-        case 150:{
-            self.oestjylland.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:1];
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Østjylland" withError:&error];
-        }
-            break;
-        case 200:{
-            self.vestjylland.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:2];
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Vestjylland" withError:&error];
-        }
-            break;
-        case 250:{
-            self.sjaelland.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:3];
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Sjaelland" withError:&error];
-        }
-            break;
-        case 300:{
-            self.sonderjylland.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:4];
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Sønderjylland" withError:&error];
-        }
-            break;
-        case 350:{
-            self.fyn.textColor = [UIColor redColor];
-            pressedButton = [NSNumber numberWithInt:5];
-            [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
-            NSError *error;
-            [[GANTracker sharedTracker] trackPageview:@"Fyn" withError:&error];
-        }
-            break;
-        default:
-            self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-            self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-            self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-            self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-            self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
-            self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
 
-            break;
+    }else if (screenBounds.size.height == 568){
+        //iphone 5 sceen
+        switch ((int)frame.y) {
+            case 100:{
+                self.nordjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:0];;
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Nordjylland" withError:&error];
+            }
+                break;
+            case 150:{
+                self.oestjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:1];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Østjylland" withError:&error];
+            }
+                break;
+            case 200:{
+                self.vestjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:2];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Vestjylland" withError:&error];
+            }
+                break;
+            case 250:{
+                self.sjaelland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:3];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Sjaelland" withError:&error];
+            }
+                break;
+            case 300:{
+                self.sonderjylland.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:4];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Sønderjylland" withError:&error];
+            }
+                break;
+            case 350:{
+                self.fyn.textColor = [UIColor redColor];
+                pressedButton = [NSNumber numberWithInt:5];
+                [self performSelector:@selector(moveNextView:) withObject:pressedButton afterDelay:0.6];
+                NSError *error;
+                [[GANTracker sharedTracker] trackPageview:@"Fyn" withError:&error];
+            }
+                break;
+            default:
+                self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
+                
+                break;
+        }
+
     }
+    
 }
 
 #pragma mark Animation

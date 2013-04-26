@@ -12,6 +12,8 @@
 #define MIN_POSITION_Y 53.f
 #define MAX_POSITION_Y 337.f
 
+#define iPHONE5_POSITION_PADDING 18.f
+
 @implementation TestDragView
 
 @synthesize lastPoint = _lastPoint;
@@ -67,36 +69,76 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    __block CGRect newFrame = self.frame;
-    [UIView animateWithDuration:0.3 animations:^{
-        int lockLocation;
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    if (screenBounds.size.height == 480){
+        //iphone 4,4s size
+        __block CGRect newFrame = self.frame;
+        [UIView animateWithDuration:0.3 animations:^{
+            int lockLocation;
+            
+            int topDiff = ((int)(self.lastPoint.y/self.frame.size.height))*self.frame.size.height - iPHONE5_POSITION_PADDING;
+            int bottomDiff = ((int)(self.lastPoint.y/self.frame.size.height)+1)*self.frame.size.height - iPHONE5_POSITION_PADDING;
+            
+            if(topDiff < 82.f)
+                topDiff = 82.f;
+            
+            if(bottomDiff > MAX_POSITION_Y)
+                bottomDiff = MAX_POSITION_Y;
+            
+            NSLog(@"TopDiff: %i", topDiff);
+            NSLog(@"BottomDiff %i", bottomDiff);
+            
+            // checking which is closer
+            if(topDiff < bottomDiff) {
+                lockLocation = topDiff;
+            } else {
+                lockLocation = bottomDiff;
+            }
+            newFrame.origin.y = lockLocation;
+            self.frame = newFrame;
+        } completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AnimationDone" object:NSStringFromCGPoint(CGPointMake(self.frame.origin.x, self.frame.origin.y))];
+        }];
         
-        int topDiff = ((int)(self.lastPoint.y/self.frame.size.height))*self.frame.size.height;
-        int bottomDiff = ((int)(self.lastPoint.y/self.frame.size.height)+1)*self.frame.size.height;
+        NSLog(@"Current position: %f", newFrame.origin.y);
         
-        if(topDiff<100)
-            topDiff = 100;
+        // setting it back to zero so it doesn't get confused with the last point
+        self.lastPoint = CGPointZero;
+
+    }else if (screenBounds.size.height == 568){
+        //iphone 5 size
+        __block CGRect newFrame = self.frame;
+        [UIView animateWithDuration:0.3 animations:^{
+            int lockLocation;
+            
+            int topDiff = ((int)(self.lastPoint.y/self.frame.size.height))*self.frame.size.height;
+            int bottomDiff = ((int)(self.lastPoint.y/self.frame.size.height)+1)*self.frame.size.height;
+            
+            if(topDiff<100)
+                topDiff = 100;
+            
+            if(bottomDiff>MAX_POSITION_Y)
+                bottomDiff = MAX_POSITION_Y;
+            
+            // checking which is closer
+            if(topDiff < bottomDiff) {
+                lockLocation = topDiff;
+            } else {
+                lockLocation = bottomDiff;
+            }
+            newFrame.origin.y = lockLocation;
+            self.frame = newFrame;
+        } completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AnimationDone" object:NSStringFromCGPoint(CGPointMake(self.frame.origin.x, self.frame.origin.y))];
+        }];
         
-        if(bottomDiff>MAX_POSITION_Y)
-            bottomDiff = MAX_POSITION_Y;
+        NSLog(@"Current position: %f", newFrame.origin.y);
         
-        // checking which is closer
-        if(topDiff < bottomDiff) {
-            lockLocation = topDiff;
-        } else {
-            lockLocation = bottomDiff;
-        }
-        newFrame.origin.y = lockLocation;
-        self.frame = newFrame;
-    } completion:^(BOOL finished) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AnimationDone" object:NSStringFromCGPoint(CGPointMake(self.frame.origin.x, self.frame.origin.y))];
-    }];
-    
-    NSLog(@"Current position: %f", newFrame.origin.y);
-    
-    // setting it back to zero so it doesn't get confused with the last point
-    self.lastPoint = CGPointZero;
-    
+        // setting it back to zero so it doesn't get confused with the last point
+        self.lastPoint = CGPointZero;
+
+    }
+       
 }
 
 /*
