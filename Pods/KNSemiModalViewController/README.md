@@ -22,20 +22,40 @@ Download a demo clip [here](https://github.com/kentnguyen/KNSemiModalViewControl
 * Works with UIViewController contained inside UINavigationController, contained inside UITabbarController
 * Auto handling of modal frame size
 * Auto handling of touch area for dismissal
-
+* Resizable after presenting so that keyboard related interactions are possible
 * Easy to understand and very small code base, only 2 files
 * Trivial to implement as subclass
-* Only use basic CAAnimation, should work fine with SDK 4.x up.
+* Landscape support (not during presentation)
+* Only use basic CAAnimation
+* Minimum iOS 5.0 (if you need 4.x support, use older commits before Jan 2013)
 
-### TODO
-* iPad support (?)
-* Landscape support
+### Optional parameters
+
+- animation duration
+- parent alpha
+- optional push-back
+- shadow opacity
+- disabling the cancel action
+- transition style: slide up, fade
+
+Easily extend this to anything you would want to make configurable. Feel free to submit pull requests.
 
 ### Installation / How to use
+* Copy 4 files in `Source` folder to your project
+* Add `QuartzCore.framework` to your project
 * `#import "UIViewController+KNSemiModal.h"` in your ViewController
 * Call `[self presentSemiModalView:myView]`
+* Call `[self dismissSemiModalView]` either from parent/presenting or child/presented controller
 
 Read my [blog post](http://bit.ly/IK7UVV) for detailed usage.
+
+### Known Issues
+- no iPad support, it will be quite different though.
+
+### Major contributors
+
+- [@yangmeyer](http://twitter.com/yangmeyer)
+- [@dchohfi](https://github.com/dchohfi)
 
 ### License
 

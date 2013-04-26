@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ServerData.h"
+#import "UIViewController+KNSemiModal.h"
 
 #define font_size 15.0
 #define label_position_X 40.0
@@ -44,9 +45,7 @@
 	// Do any additional setup after loading the view.
     
     [self performSelector:@selector(getServerData) withObject:self afterDelay:0.2];
-    
     [self.navigationController setNavigationBarHidden:NO];
-    
     self.view.frame = CGRectMake(0 , 0, 320, 200);
     
 //    CGRect fullScreen = [[UIScreen mainScreen] applicationFrame];
@@ -59,7 +58,6 @@
     self.cellView.layer.borderWidth = 3.5;
     self.cellView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
     self.cellView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
-//    self.view = scrollView;
     [self.view addSubview:self.cellView];
     
     self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -102,9 +100,11 @@
     phoneLabel.text = [NSString stringWithFormat:@"%@",self.phone];
     [self.cellView addSubview:phoneLabel];
     
-    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4*3 - label_height, label_width, label_height)];
+    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4*3 - label_height, label_width, label_height * 2)];
     [addressLabel setBackgroundColor:[UIColor clearColor]];
     addressLabel.textColor = [UIColor blackColor];
+    [addressLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    addressLabel.numberOfLines = 0;
     [addressLabel setFont:[UIFont fontWithName:@"Raleway" size:font_size]];
     addressLabel.text = [NSString stringWithFormat:@"%@",self.address];
     [self.cellView addSubview:addressLabel];
@@ -115,6 +115,7 @@
 - (void)close:(id)sender
 {
     NSLog(@"View dismissed");
+    [self dismissSemiModalView];
 }
 
 - (void)didReceiveMemoryWarning

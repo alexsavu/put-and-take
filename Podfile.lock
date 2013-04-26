@@ -2,7 +2,7 @@
 PODS: 
 - AFNetworking (1.1.0)
 - JSONKit (1.5pre)
-- KNSemiModalViewController (0.1)
+- KNSemiModalViewController (0.3)
 - RestKit (0.20.0): 
   - RestKit/Core (= 0.20.0)
 - RestKit/Core (0.20.0): 
@@ -19,21 +19,21 @@ PODS:
 - RestKit/Support (0.20.0)
 - SOCKit (1.1)
 
-COCOAPODS: 0.16.4
-
 DEPENDENCIES: 
 - JSONKit (~> 1.5pre)
-- KNSemiModalViewController (~> 0.1)
+- KNSemiModalViewController (~> 0.3)
 - RestKit (~> 0.20.0)
 
+COCOAPODS: 0.16.4
+
 SPEC CHECKSUMS: 
-  SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
-  RestKit/CoreData: 580771664a14eaaa40bf53cf83584f12fc141930
+  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   RestKit/Network: 580771664a14eaaa40bf53cf83584f12fc141930
-  KNSemiModalViewController: e607645659ce067b5ac2264d73029a1bd02148e7
-  RestKit/Core: 580771664a14eaaa40bf53cf83584f12fc141930
-  RestKit/Support: 580771664a14eaaa40bf53cf83584f12fc141930
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+  RestKit/Support: 580771664a14eaaa40bf53cf83584f12fc141930
+  RestKit/Core: 580771664a14eaaa40bf53cf83584f12fc141930
+  SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
   RestKit/ObjectMapping: 580771664a14eaaa40bf53cf83584f12fc141930
   RestKit: 580771664a14eaaa40bf53cf83584f12fc141930
-  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  KNSemiModalViewController: 976b739f57aa595359a2cfdf6aadde991ada8f99
+  RestKit/CoreData: 580771664a14eaaa40bf53cf83584f12fc141930
