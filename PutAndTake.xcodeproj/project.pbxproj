@@ -21,7 +21,6 @@
 		3587CD201585E98D00BD1ADA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587CD1F1585E98D00BD1ADA /* ViewController.m */; };
 		3E114A9C1724566E007116CF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E114A9B1724566E007116CF /* icon.png */; };
 		3E114A9E17245675007116CF /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E114A9D17245675007116CF /* icon@2x.png */; };
-		3E114AA617245D25007116CF /* selector the good one.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E114AA517245D25007116CF /* selector the good one.png */; };
 		3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1C03C915DE3DA30077D9A0 /* big_arrow.png */; };
 		3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E31327C15BB13AB0061C661 /* map_pointer.png */; };
 		3E372B1615C589410060F8F4 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E372B1515C589410060F8F4 /* DetailsViewController.m */; };
@@ -31,6 +30,7 @@
 		3E5CA79D15E2CBCA00F80CA8 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79C15E2CBCA00F80CA8 /* libGoogleAnalytics.a */; };
 		3E5CA79F15E2CBE600F80CA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */; };
 		3E5CA7AA15E2CCCF00F80CA8 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */; };
+		3E67D9181732AF52001ED70D /* selector the good one.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E67D9171732AF52001ED70D /* selector the good one.png */; };
 		3E6E03F816B83CFB0010AE08 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */; };
 		3E6E03FB16B83CFF0010AE08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FA16B83CFF0010AE08 /* Default@2x.png */; };
 		3E6E03FD16B83D050010AE08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FC16B83D050010AE08 /* Default.png */; };
@@ -65,7 +65,6 @@
 		3587CD1F1585E98D00BD1ADA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3E114A9B1724566E007116CF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3E114A9D17245675007116CF /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		3E114AA517245D25007116CF /* selector the good one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector the good one.png"; sourceTree = "<group>"; };
 		3E1C03C915DE3DA30077D9A0 /* big_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_arrow.png; sourceTree = "<group>"; };
 		3E31327C15BB13AB0061C661 /* map_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pointer.png; sourceTree = "<group>"; };
 		3E372B1415C589410060F8F4 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		3E5CA79C15E2CBCA00F80CA8 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		3E67D9171732AF52001ED70D /* selector the good one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector the good one.png"; sourceTree = "<group>"; };
 		3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E6E03FA16B83CFF0010AE08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		3E6E03FC16B83D050010AE08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		3E31327B15BB13850061C661 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3E114AA517245D25007116CF /* selector the good one.png */,
+				3E67D9171732AF52001ED70D /* selector the good one.png */,
 				3EBEBDF0171F5ACC00D5A4FF /* Raleway.ttf */,
 				3E6E03FC16B83D050010AE08 /* Default.png */,
 				3E6E03FA16B83CFF0010AE08 /* Default@2x.png */,
@@ -281,7 +281,7 @@
 				3EBEBDF1171F5ACC00D5A4FF /* Raleway.ttf in Resources */,
 				3E114A9C1724566E007116CF /* icon.png in Resources */,
 				3E114A9E17245675007116CF /* icon@2x.png in Resources */,
-				3E114AA617245D25007116CF /* selector the good one.png in Resources */,
+				3E67D9181732AF52001ED70D /* selector the good one.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

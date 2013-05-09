@@ -56,6 +56,7 @@
     //    [self startAnimation];
     
     [self.view addSubview:borderView];
+    NSLog(@"Borderdview: %f", borderView.frame.size.width);
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if (screenBounds.size.height == 480) {
         // iphone 4,4s screen
@@ -106,6 +107,7 @@
         self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
         self.testDrag.parentView = self.view;;
         [self.view addSubview:self.testDrag];
+//        NSLog(@"Test drag")
     }else if (screenBounds.size.height == 568){
         //iphone 5 sceen
         self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
