@@ -34,7 +34,7 @@
 - (void) viewDidAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
     
-    ServerData *data = [ServerData sharedInstance];
+    ServerData *data = [[ServerData alloc] init];
     [data sendRequestsWithCompletionBlock:^{
         self.sharedLocations = data.locations;
         [self lakesPositions];
@@ -127,11 +127,6 @@
                 break;
         }
     }
-}
-
--(void) getLocations{
-    ServerData *data = [ServerData sharedInstance];
-    self.sharedLocations = data.locations;
 }
 
 -(void)lakesPositions {

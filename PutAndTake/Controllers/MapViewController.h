@@ -25,8 +25,6 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfLocations;
 @property (nonatomic, assign) int buttonPressed;
 
-
-- (void)getLocations;
 - (void)lakesPositions;
 - (void)chooseLocation;
 - (void)zoomToFitMapAnnotations;

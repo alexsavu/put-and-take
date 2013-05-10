@@ -19,8 +19,7 @@
 @synthesize lastPoint = _lastPoint;
 @synthesize parentView = _parentView;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -56,16 +55,6 @@
         self.frame = limitFrame;
     }
     NSLog(@"dragging %f, %f", self.frame.origin.x, self.frame.origin.y);
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{

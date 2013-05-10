@@ -27,42 +27,16 @@ static const NSInteger kGANDispatchPeriodSec = 10;
                                            dispatchPeriod:10
                                                  delegate:nil];
     
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    // Override point for customization after application launch.
-//    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-//    self.window.rootViewController = self.viewController;
-//    [self.window makeKeyAndVisible];
-    
     //Instatiating the app's window
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     self.viewController = [[ViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-//    self.window.rootViewController = self.viewController;
     [self.window setRootViewController:self.navigationController];
-//    [self.window addSubview:self.navigationController.view];
     [self.window addSubview: self.viewController.view];
     [self.navigationController setNavigationBarHidden:YES];
     self.viewController.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
-    
-//    //Instatiating the app's window
-//    
-//    CGRect windowFrame = [[UIScreen mainScreen] bounds];
-//    self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-//    self.mapViewController = [[MapViewController alloc] init];
-//    self.window.rootViewController = self.mapViewController;
-//    [self.window addSubview: self.mapViewController.view];
-    
-//    //let AFNetworking manage the activity indicator
-//    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-//    
-//    //Initializing RK with the base URL
-//    NSURL *baseURL = [NSURL URLWithString:@"http://184.72.245.59:5000"];
-//    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-//    
-//    //we want to work with JSON-Data
-//    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
     
     [self.window makeKeyAndVisible];
     

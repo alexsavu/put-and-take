@@ -15,20 +15,9 @@
 
 @synthesize locations = _locations;
 
-static ServerData *singleton = nil;
-
-+(ServerData* ) sharedInstance{
-    if(singleton == nil){
-        singleton = [[ServerData alloc] init];
-    }
-    return singleton;
-}
-
 -(void)sendRequestsWithCompletionBlock:(void (^)(void))completion
                                 failure:(void (^)(void))failure
 {
-// Perform a simple HTTP GET and call me back with the results
-//    [[RKClient sharedClient] get:@"/" delegate:self];
     
     NSURL *url = [NSURL URLWithString:@"http://184.72.245.59:5000/areas"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

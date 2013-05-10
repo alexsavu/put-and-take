@@ -30,8 +30,7 @@
 @synthesize phone = _phone;
 @synthesize address = _address;
 
-- (id)initWithSize:(double )x Y:(double)y Width:(double)width Height:(double)height
-{
+- (id)initWithSize:(double )x Y:(double)y Width:(double)width Height:(double)height{
     self = [super init];
     if (self) {
         self.view.frame = CGRectMake(x, y, width, height);
@@ -47,10 +46,6 @@
     [self performSelector:@selector(getServerData) withObject:self afterDelay:0.2];
     [self.navigationController setNavigationBarHidden:NO];
     self.view.frame = CGRectMake(0 , 0, 320, 200);
-    
-//    CGRect fullScreen = [[UIScreen mainScreen] applicationFrame];
-//    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:fullScreen];
-//    scrollView.contentSize = CGSizeMake(320.0, 750.0);
     
     self.cellView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 280)-(self.view.frame.size.width - 280)/2, 70.0, 280.0, 220.0)];
     
@@ -81,7 +76,7 @@
 
 -(void)getServerData
 {
-    ServerData *data = [ServerData sharedInstance];
+    ServerData *data = [[ServerData alloc] init];
     self.sharedLocations = data.locations;
 //    NSLog(@"The response in detailsview: %@", [[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"] valueForKey:@"price"]);
     NSLog(@"THE PRICE: %@", self.address);

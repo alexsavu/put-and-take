@@ -10,14 +10,10 @@
 #import <RestKit/RestKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ServerData : NSObject{
-
-    NSArray *locations;
-}
+@interface ServerData : NSObject
 
 @property (nonatomic, strong) NSArray *locations;
 
-+(ServerData* ) sharedInstance;
 
 -(void)sendRequestsWithCompletionBlock:(void (^)(void))completion
                                failure:(void (^)(void))failure;

@@ -56,7 +56,7 @@
     //    [self startAnimation];
     
     [self.view addSubview:borderView];
-    NSLog(@"Borderdview: %f", borderView.frame.size.width);
+    NSLog(@"Borderdview: %f", borderView.frame.origin.x);
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if (screenBounds.size.height == 480) {
         // iphone 4,4s screen
