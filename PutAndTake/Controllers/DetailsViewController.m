@@ -66,20 +66,12 @@
     [self.view addSubview:self.doneButton];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
-    
-//    UIImageView *priceImage = [[UIImageView alloc] initWithFrame:CGRectMake(10.0, 10.0, 20.0, 40.0)];
-//    priceImage.image = [UIImage imageNamed:@"price_sign"];
-//    [self.cellView addSubview:priceImage];
-    
-
 }
 
 -(void)getServerData
 {
     ServerData *data = [[ServerData alloc] init];
     self.sharedLocations = data.locations;
-//    NSLog(@"The response in detailsview: %@", [[[self.sharedLocations objectAtIndex:0] valueForKey:@"locations"] valueForKey:@"price"]);
-    NSLog(@"THE PRICE: %@", self.address);
     
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4 - label_height, label_width, label_height)];
     [priceLabel setBackgroundColor:[UIColor clearColor]];

@@ -21,8 +21,6 @@
 @end
 
 @implementation ViewController
-@synthesize pathLayer = _pathLayer;
-@synthesize animationLayer = _animationLayer;
 
 @synthesize touchPoint = _touchPoint;
 @synthesize testDrag = _testDrag;
@@ -31,7 +29,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [[GANTracker sharedTracker] trackPageview:@"/menu_view" withError:nil];
-    
     
     [self layoutLabels];
 
@@ -45,15 +42,6 @@
     borderView.layer.borderWidth = 3.5;
     borderView.layer.borderColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1].CGColor;
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
-    
-    self.animationLayer = [CALayer layer];
-    self.animationLayer.frame = CGRectMake(20.0f, 64.0f,
-                                           CGRectGetWidth(borderView.layer.bounds) ,
-                                           CGRectGetHeight(borderView.layer.bounds));
-    [borderView.layer addSublayer:self.animationLayer];
-    
-    //    [self setupDrawingLayer];
-    //    [self startAnimation];
     
     [self.view addSubview:borderView];
     NSLog(@"Borderdview: %f", borderView.frame.origin.x);
@@ -107,10 +95,9 @@
         self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
         self.testDrag.parentView = self.view;;
         [self.view addSubview:self.testDrag];
-//        NSLog(@"Test drag")
     }else if (screenBounds.size.height == 568){
         //iphone 5 sceen
-        self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 45, 200, 46)];
+        self.nordjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 48, 200, 46)];
         [self.nordjylland setBackgroundColor:[UIColor clearColor]];
         self.nordjylland.text = @"Nordjylland";
         [self.nordjylland setTextAlignment:NSTextAlignmentCenter];
@@ -119,35 +106,35 @@
         [self.nordjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.nordjylland];
         
-        self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 95, 200, 46)];
+        self.oestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 98, 200, 46)];
         [self.oestjylland setBackgroundColor:[UIColor clearColor]];
         self.oestjylland.text = @"Østjylland";
         self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
         [self.oestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.oestjylland];
         
-        self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 145, 240, 46)];
+        self.vestjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 148, 240, 46)];
         [self.vestjylland setBackgroundColor:[UIColor clearColor]];
         self.vestjylland.text = @"Vestjylland";
         self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
         [self.vestjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.vestjylland];
         
-        self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 195, 240, 46)];
+        self.sjaelland = [[UILabel alloc] initWithFrame:CGRectMake(15, 198, 240, 46)];
         [self.sjaelland setBackgroundColor:[UIColor clearColor]];
         self.sjaelland.text = @"Sjælland";
         self.sjaelland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
         [self.sjaelland setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.sjaelland];
         
-        self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 245, 240, 46)];
+        self.sonderjylland = [[UILabel alloc] initWithFrame:CGRectMake(15, 248, 240, 46)];
         [self.sonderjylland setBackgroundColor:[UIColor clearColor]];
         self.sonderjylland.text = @"Sønderjylland";
         self.sonderjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
         [self.sonderjylland setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.sonderjylland];
         
-        self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, 240, 46)];
+        self.fyn = [[UILabel alloc] initWithFrame:CGRectMake(15, 298, 240, 46)];
         [self.fyn setBackgroundColor:[UIColor clearColor]];
         self.fyn.text = @"Fyn";
         self.fyn.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
