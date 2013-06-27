@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ServerData.h"
 #import "UIViewController+KNSemiModal.h"
+#import "NSString+FontAwesome.h"
+#import "FAImageView.h"
 
 #define font_size 15.0
 #define label_position_X 40.0
@@ -17,6 +19,8 @@
 #define label_width 220.0
 
 @interface DetailsViewController ()
+
+@property (nonatomic, strong) NSArray *iconSearchArray;
 
 @end
 
@@ -80,6 +84,10 @@
     priceLabel.text = [NSString stringWithFormat:@"%@ kr",self.price];
     [self.cellView addSubview:priceLabel];
     
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4 - label_height, 20.f, label_height)];
+    [imageView setImage:[UIImage imageNamed:@"cart32.png"]];
+    [self.cellView addSubview:imageView];
+    
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4*2 - label_height, label_width, label_height)];
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
     phoneLabel.textColor = [UIColor blackColor];
@@ -96,12 +104,10 @@
     addressLabel.text = [NSString stringWithFormat:@"%@",self.address];
     [self.cellView addSubview:addressLabel];
     
-    
 }
 
 - (void)close:(id)sender
-{
-    NSLog(@"View dismissed");
+{ 
     [self dismissSemiModalView];
 }
 

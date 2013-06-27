@@ -39,6 +39,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>FontAwesome.ttf</string>
 		<string>Raleway.ttf</string>
 		<string>Infinity.ttf</string>
 	</array>
