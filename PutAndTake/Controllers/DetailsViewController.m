@@ -10,8 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ServerData.h"
 #import "UIViewController+KNSemiModal.h"
-#import "NSString+FontAwesome.h"
-#import "FAImageView.h"
 
 #define font_size 15.0
 #define label_position_X 40.0
@@ -84,9 +82,9 @@
     priceLabel.text = [NSString stringWithFormat:@"%@ kr",self.price];
     [self.cellView addSubview:priceLabel];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4 - label_height, 20.f, label_height)];
-    [imageView setImage:[UIImage imageNamed:@"cart32.png"]];
-    [self.cellView addSubview:imageView];
+    UIImageView *priceImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4 - label_height, 20.f, label_height)];
+    [priceImage setImage:[UIImage imageNamed:@"euro.png"]];
+    [self.cellView addSubview:priceImage];
     
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4*2 - label_height, label_width, label_height)];
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
@@ -94,6 +92,10 @@
     [phoneLabel setFont:[UIFont fontWithName:@"Raleway" size:font_size]];
     phoneLabel.text = [NSString stringWithFormat:@"%@",self.phone];
     [self.cellView addSubview:phoneLabel];
+    
+    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*2 - label_height, 20.f, label_height + 6)];
+    [phoneImage setImage:[UIImage imageNamed:@"phone.png"]];
+    [self.cellView addSubview:phoneImage];
     
     UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.cellView.frame.size.height/4*3 - label_height, label_width, label_height * 2)];
     [addressLabel setBackgroundColor:[UIColor clearColor]];
@@ -103,6 +105,10 @@
     [addressLabel setFont:[UIFont fontWithName:@"Raleway" size:font_size]];
     addressLabel.text = [NSString stringWithFormat:@"%@",self.address];
     [self.cellView addSubview:addressLabel];
+    
+    UIImageView *addressImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*3 - label_height, 20.f, label_height)];
+    [addressImage setImage:[UIImage imageNamed:@"home.png"]];
+    [self.cellView addSubview:addressImage];
     
 }
 
