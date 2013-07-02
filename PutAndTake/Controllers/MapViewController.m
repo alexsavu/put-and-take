@@ -38,7 +38,6 @@
     [data sendRequestsWithCompletionBlock:^{
         self.sharedLocations = data.locations;
         [self lakesPositions];
-        NSLog(@"Za location: %@", self.sharedLocations);
     } failure:^{
         NSLog(@"WHYYYYY");
     }];
@@ -78,12 +77,6 @@
     
     //Make it as acurate as possible
     [locationManager setDistanceFilter:kCLLocationAccuracyBest];
-    
-    //Tell the manager to start looking for its location
-//    [locationManager startUpdatingLocation];
-    
-    //Shows the blue annotation
-//    [self.theMapView setShowsUserLocation:YES];
 
 }
 
@@ -131,8 +124,6 @@
 
 -(void)lakesPositions {
     [self chooseLocation];
-//    NSLog(@"Current Zone %i", self.currentZoneIndex);
-//    NSLog(@"The things : %@", [self.currentZone objectAtIndex:0]);
     
     for (NSDictionary* row in [self.currentZone objectAtIndex:0]) {
         NSNumber *latitude = [row valueForKey:@"latitude"];
@@ -148,8 +139,7 @@
         self.annotation = [[ClusteredAnnotation alloc] initWithCoordinate:coordinate andTitle:name andPrice:price andPhone:phone andAddress:address];
         self.annotation.title = name;
         [self.arrayOfLocations addObject:self.annotation];
-//        [self.mapView addAnnotation:annotation];
-//        [self zoomToFitMapAnnotations];
+
     }
     // Center out map on our locations
     if ([self.arrayOfLocations count] > 0) {
@@ -205,12 +195,8 @@
         calloutAccessoryControlTapped:(UIControl *)control
 {
     if ([((UIButton *)control)buttonType] == UIButtonTypeDetailDisclosure) {
-        NSLog(@"Title: %@", [(ClusteredAnnotation*)[view annotation] title]);
         DetailsViewController *detailsViewController =[[DetailsViewController alloc] initWithSize:0 Y:0 Width:320 Height:340];
-//        [[self navigationController] pushViewController:detailsViewController animated:YES];
         [self presentSemiViewController:detailsViewController];
-        
-        NSLog(@"The address: %@",[(ClusteredAnnotation*)[view annotation] address]);
         detailsViewController.price = [(ClusteredAnnotation*)[view annotation] price];
         detailsViewController.phone = [(ClusteredAnnotation*)[view annotation] phone];
         detailsViewController.address = [(ClusteredAnnotation*)[view annotation] address];

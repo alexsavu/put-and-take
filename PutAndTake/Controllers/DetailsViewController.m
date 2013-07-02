@@ -15,6 +15,7 @@
 #define label_position_X 40.0
 #define label_height 20.0
 #define label_width 220.0
+#define image_height 20.f
 
 @interface DetailsViewController ()
 
@@ -82,7 +83,7 @@
     priceLabel.text = [NSString stringWithFormat:@"%@ kr",self.price];
     [self.cellView addSubview:priceLabel];
     
-    UIImageView *priceImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4 - label_height, 20.f, label_height)];
+    UIImageView *priceImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4 - label_height, image_height, label_height)];
     [priceImage setImage:[UIImage imageNamed:@"euro.png"]];
     [self.cellView addSubview:priceImage];
     
@@ -93,7 +94,7 @@
     phoneLabel.text = [NSString stringWithFormat:@"%@",self.phone];
     [self.cellView addSubview:phoneLabel];
     
-    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*2 - label_height, 20.f, label_height + 6)];
+    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*2 - label_height, image_height, label_height + 6)];
     [phoneImage setImage:[UIImage imageNamed:@"phone.png"]];
     [self.cellView addSubview:phoneImage];
     
@@ -106,7 +107,7 @@
     addressLabel.text = [NSString stringWithFormat:@"%@",self.address];
     [self.cellView addSubview:addressLabel];
     
-    UIImageView *addressImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*3 - label_height, 20.f, label_height)];
+    UIImageView *addressImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*3 - label_height, image_height, label_height)];
     [addressImage setImage:[UIImage imageNamed:@"home.png"]];
     [self.cellView addSubview:addressImage];
     
