@@ -9,10 +9,19 @@
 #import "TestDragView.h"
 #import "ViewController.h"
 
-#define MIN_POSITION_Y 53.f
-#define MAX_POSITION_Y 337.f
+#define MIN_POSITION_IPHONE5_Y 100.f
+#define MIN_POSITION_Y 82.f
+#define MAX_POSITION_Y 334.f
+#define MAX_POSITION_IPHONE5_Y 350.f
 
 #define iPHONE5_POSITION_PADDING 18.f
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+@interface TestDragView()
+
+@property (assign, nonatomic) CGRect frameBeforeMove;
+
+@end
 
 @implementation TestDragView
 
@@ -29,9 +38,13 @@
     return self;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.frameBeforeMove = self.frame;
+}
+
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
     CGPoint pt = [[touches  anyObject] locationInView:self.parentView];
-    
     if(self.lastPoint.x != 0 && self.lastPoint.y != 0) {
         CGRect myFrame = self.frame;
         
@@ -46,18 +59,34 @@
         self.lastPoint = pt;
     }
     CGRect limitFrame = self.frame;
-    if (self.frame.origin.y < MIN_POSITION_Y) {
-        limitFrame.origin.y = MIN_POSITION_Y;
-        self.frame = limitFrame;
-    }
-    if (self.frame.origin.y > MAX_POSITION_Y) {
-        limitFrame.origin.y = MAX_POSITION_Y;
-        self.frame = limitFrame;
+    if (IS_IPHONE_5) {
+        if (self.frame.origin.y < MIN_POSITION_IPHONE5_Y) {
+            limitFrame.origin.y = MIN_POSITION_IPHONE5_Y;
+            self.frame = limitFrame;
+        }
+        if (self.frame.origin.y > MAX_POSITION_IPHONE5_Y) {
+            limitFrame.origin.y = MAX_POSITION_IPHONE5_Y;
+            self.frame = limitFrame;
+        }
+    } else {
+        if (self.frame.origin.y < MIN_POSITION_Y) {
+            limitFrame.origin.y = MIN_POSITION_Y;
+            self.frame = limitFrame;
+        }
+        if (self.frame.origin.y > MAX_POSITION_Y) {
+            limitFrame.origin.y = MAX_POSITION_Y;
+            self.frame = limitFrame;
+        }
     }
     NSLog(@"dragging %f, %f", self.frame.origin.x, self.frame.origin.y);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"Frame before move: %f", self.frameBeforeMove.origin.y);
+    NSLog(@"Frame now: %f", self.frame.origin.y);
+    if (self.frameBeforeMove.origin.y == self.frame.origin.y || (self.frameBeforeMove.origin.y == 0)) {
+        return;
+    }
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if (screenBounds.size.height == 480){
         //iphone 4,4s size
@@ -106,8 +135,8 @@
             if(topDiff<100)
                 topDiff = 100;
             
-            if(bottomDiff>MAX_POSITION_Y)
-                bottomDiff = MAX_POSITION_Y;
+            if(bottomDiff>MAX_POSITION_IPHONE5_Y)
+                bottomDiff = MAX_POSITION_IPHONE5_Y;
             
             // checking which is closer
             if(topDiff < bottomDiff) {

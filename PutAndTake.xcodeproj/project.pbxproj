@@ -26,9 +26,7 @@
 		3E6E03F816B83CFB0010AE08 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */; };
 		3E6E03FB16B83CFF0010AE08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FA16B83CFF0010AE08 /* Default@2x.png */; };
 		3E6E03FD16B83D050010AE08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FC16B83D050010AE08 /* Default.png */; };
-		3E8C2FD515EBD1DF00BC2EC4 /* price_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C2FD415EBD1DF00BC2EC4 /* price_sign.png */; };
 		3E9C1AC0173C52AA00FE0E06 /* selector the good one.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C1ABF173C52AA00FE0E06 /* selector the good one.png */; };
-		3EA17032177382A800671B12 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA17031177382A800671B12 /* FontAwesome.ttf */; };
 		3EB227D3173CB9A30042C583 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D0173CB9A30042C583 /* MapPoint.m */; };
 		3EB227D4173CB9A30042C583 /* ServerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D2173CB9A30042C583 /* ServerData.m */; };
 		3EB227D7173CB9E60042C583 /* TestDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D6173CB9E60042C583 /* TestDragView.m */; };
@@ -38,7 +36,6 @@
 		3EB227E5173CBA4E0042C583 /* ClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227E2173CBA4E0042C583 /* ClusteredAnnotation.m */; };
 		3EB227E6173CBA4E0042C583 /* ClusteringMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227E4173CBA4E0042C583 /* ClusteringMapView.m */; };
 		3EB227E9173CBA920042C583 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB227E8173CBA920042C583 /* libGoogleAnalytics.a */; };
-		3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5B82815D30F13002FDF23 /* selector@2x.png */; };
 		3EBB3E55178214700026B343 /* euro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBB3E4F178214700026B343 /* euro@2x.png */; };
 		3EBB3E56178214700026B343 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBB3E50178214700026B343 /* home.png */; };
 		3EBB3E57178214700026B343 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBB3E51178214700026B343 /* home@2x.png */; };
@@ -73,9 +70,7 @@
 		3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E6E03FA16B83CFF0010AE08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		3E6E03FC16B83D050010AE08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
-		3E8C2FD415EBD1DF00BC2EC4 /* price_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = price_sign.png; sourceTree = "<group>"; };
 		3E9C1ABF173C52AA00FE0E06 /* selector the good one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector the good one.png"; sourceTree = "<group>"; };
-		3EA17031177382A800671B12 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		3EB227CF173CB9A30042C583 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPoint.h; path = Model/MapPoint.h; sourceTree = "<group>"; };
 		3EB227D0173CB9A30042C583 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPoint.m; path = Model/MapPoint.m; sourceTree = "<group>"; };
 		3EB227D1173CB9A30042C583 /* ServerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerData.h; path = Model/ServerData.h; sourceTree = "<group>"; };
@@ -94,7 +89,6 @@
 		3EB227E4173CBA4E0042C583 /* ClusteringMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClusteringMapView.m; path = ClusteringMapView/ClusteringMapView.m; sourceTree = "<group>"; };
 		3EB227E7173CBA920042C583 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = GoogleAnalytics/GANTracker.h; sourceTree = "<group>"; };
 		3EB227E8173CBA920042C583 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		3EB5B82815D30F13002FDF23 /* selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector@2x.png"; sourceTree = "<group>"; };
 		3EBB3E4F178214700026B343 /* euro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "euro@2x.png"; sourceTree = "<group>"; };
 		3EBB3E50178214700026B343 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		3EBB3E51178214700026B343 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
@@ -195,7 +189,6 @@
 				3EBB3E51178214700026B343 /* home@2x.png */,
 				3EBB3E52178214700026B343 /* phone.png */,
 				3EBB3E53178214700026B343 /* phone@2x.png */,
-				3EA17031177382A800671B12 /* FontAwesome.ttf */,
 				3E114A9D17245675007116CF /* icon@2x.png */,
 				3E114A9B1724566E007116CF /* icon.png */,
 				3E9C1ABF173C52AA00FE0E06 /* selector the good one.png */,
@@ -203,9 +196,7 @@
 				3E6E03FC16B83D050010AE08 /* Default.png */,
 				3E6E03FA16B83CFF0010AE08 /* Default@2x.png */,
 				3E6E03F716B83CFB0010AE08 /* Default-568h@2x.png */,
-				3E8C2FD415EBD1DF00BC2EC4 /* price_sign.png */,
 				3E1C03C915DE3DA30077D9A0 /* big_arrow.png */,
-				3EB5B82815D30F13002FDF23 /* selector@2x.png */,
 				3E31327C15BB13AB0061C661 /* map_pointer.png */,
 			);
 			name = Resources;
@@ -317,9 +308,7 @@
 			files = (
 				3587CD171585E98D00BD1ADA /* InfoPlist.strings in Resources */,
 				3E31327D15BB13AB0061C661 /* map_pointer.png in Resources */,
-				3EB5B82A15D30F13002FDF23 /* selector@2x.png in Resources */,
 				3E1C03CA15DE3DA30077D9A0 /* big_arrow.png in Resources */,
-				3E8C2FD515EBD1DF00BC2EC4 /* price_sign.png in Resources */,
 				3E6E03F816B83CFB0010AE08 /* Default-568h@2x.png in Resources */,
 				3E6E03FB16B83CFF0010AE08 /* Default@2x.png in Resources */,
 				3E6E03FD16B83D050010AE08 /* Default.png in Resources */,
@@ -327,7 +316,6 @@
 				3E114A9C1724566E007116CF /* icon.png in Resources */,
 				3E114A9E17245675007116CF /* icon@2x.png in Resources */,
 				3E9C1AC0173C52AA00FE0E06 /* selector the good one.png in Resources */,
-				3EA17032177382A800671B12 /* FontAwesome.ttf in Resources */,
 				3EBB3E55178214700026B343 /* euro@2x.png in Resources */,
 				3EBB3E56178214700026B343 /* home.png in Resources */,
 				3EBB3E57178214700026B343 /* home@2x.png in Resources */,

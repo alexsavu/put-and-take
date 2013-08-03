@@ -107,7 +107,7 @@
     addressLabel.text = [NSString stringWithFormat:@"%@",self.address];
     [self.cellView addSubview:addressLabel];
     
-    UIImageView *addressImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*3 - label_height, image_height, label_height)];
+    UIImageView *addressImage = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, self.cellView.frame.size.height/4*3 - label_height/2, image_height, label_height)];
     [addressImage setImage:[UIImage imageNamed:@"home.png"]];
     [self.cellView addSubview:addressImage];
     
