@@ -15,6 +15,7 @@
 #import "ClusteredAnnotation.h"
 #import "ClusteringMapView.h"
 #import "TestDragView.h"
+#import <MBHUDView.h>
 
 @interface MapViewController()
 
@@ -33,7 +34,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
-    
+    [MBHUDView hudWithBody:@"Loading places" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.f show:YES];
     ServerData *data = [[ServerData alloc] init];
     [data sendRequestsWithCompletionBlock:^{
         self.sharedLocations = data.locations;
@@ -141,12 +142,14 @@
         [self.arrayOfLocations addObject:self.annotation];
 
     }
+
     // Center out map on our locations
     if ([self.arrayOfLocations count] > 0) {
         [self.theMapView centerMapOnAnnotationSet:self.arrayOfLocations];
     }
     // Add our annotations to the map
     [self.theMapView addAnnotations:self.arrayOfLocations];
+    [MBHUDView dismissCurrentHUD];
 }
 
 
@@ -188,6 +191,7 @@
         annotationView.image=[UIImage imageNamed:@"map_pointer.png"];
         return annotationView;
     }
+    
     return nil;    
 }
 

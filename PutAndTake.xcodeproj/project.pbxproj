@@ -27,6 +27,7 @@
 		3E6E03FB16B83CFF0010AE08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FA16B83CFF0010AE08 /* Default@2x.png */; };
 		3E6E03FD16B83D050010AE08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6E03FC16B83D050010AE08 /* Default.png */; };
 		3E9C1AC0173C52AA00FE0E06 /* selector the good one.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C1ABF173C52AA00FE0E06 /* selector the good one.png */; };
+		3EA1FA4817B02D37002F2499 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA1FA4717B02D37002F2499 /* Crashlytics.framework */; };
 		3EB227D3173CB9A30042C583 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D0173CB9A30042C583 /* MapPoint.m */; };
 		3EB227D4173CB9A30042C583 /* ServerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D2173CB9A30042C583 /* ServerData.m */; };
 		3EB227D7173CB9E60042C583 /* TestDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB227D6173CB9E60042C583 /* TestDragView.m */; };
@@ -71,6 +72,7 @@
 		3E6E03FA16B83CFF0010AE08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		3E6E03FC16B83D050010AE08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		3E9C1ABF173C52AA00FE0E06 /* selector the good one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector the good one.png"; sourceTree = "<group>"; };
+		3EA1FA4717B02D37002F2499 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3EB227CF173CB9A30042C583 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPoint.h; path = Model/MapPoint.h; sourceTree = "<group>"; };
 		3EB227D0173CB9A30042C583 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPoint.m; path = Model/MapPoint.m; sourceTree = "<group>"; };
 		3EB227D1173CB9A30042C583 /* ServerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerData.h; path = Model/ServerData.h; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				3587CD111585E98D00BD1ADA /* CoreGraphics.framework in Frameworks */,
 				629F34098BD54BD8B6D4CD0C /* libPods.a in Frameworks */,
 				3EB227E9173CBA920042C583 /* libGoogleAnalytics.a in Frameworks */,
+				3EA1FA4817B02D37002F2499 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +143,7 @@
 		3587CD0B1585E98D00BD1ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EA1FA4717B02D37002F2499 /* Crashlytics.framework */,
 				3E5CA7A915E2CCCF00F80CA8 /* libsqlite3.0.dylib */,
 				3E5CA79E15E2CBE500F80CA8 /* CFNetwork.framework */,
 				3E372B1F15C597110060F8F4 /* QuartzCore.framework */,
@@ -266,6 +270,7 @@
 				3587CD051585E98D00BD1ADA /* Frameworks */,
 				3587CD061585E98D00BD1ADA /* Resources */,
 				A10ED2879368474F8334921A /* Copy Pods Resources */,
+				3EA1FA4617B02D12002F2499 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -328,6 +333,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3EA1FA4617B02D12002F2499 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 64fa61fc5170cbc0c21ce61778c46c3b217dedf8";
+		};
 		A10ED2879368474F8334921A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,6 +448,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20882BE49A4A4128A6310A6C /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexandru Savu (439NBKN3T4)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PutAndTake/PutAndTake-Prefix.pch";
 				INFOPLIST_FILE = "PutAndTake/PutAndTake-Info.plist";
@@ -439,6 +463,7 @@
 					"\"$(SRCROOT)/PutAndTake/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A37B9D80-B026-422A-8FC3-6C812F7EBC6A";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -449,6 +474,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20882BE49A4A4128A6310A6C /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexandru Savu (439NBKN3T4)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PutAndTake/PutAndTake-Prefix.pch";
 				INFOPLIST_FILE = "PutAndTake/PutAndTake-Info.plist";
@@ -459,6 +489,7 @@
 					"\"$(SRCROOT)/PutAndTake/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A37B9D80-B026-422A-8FC3-6C812F7EBC6A";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

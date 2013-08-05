@@ -400,7 +400,7 @@
     region.span.longitudeDelta = (maxLng - minLng) * mapPadding;
     
     MKCoordinateRegion scaledRegion = [self regionThatFits:region];
-    [self setRegion:scaledRegion animated:YES];
+    [self setRegion:scaledRegion];
 }
 
 @end

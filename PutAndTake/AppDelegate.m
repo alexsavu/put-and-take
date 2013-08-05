@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "MapViewController.h"
 #import "GANTracker.h"
+#import <Crashlytics/Crashlytics.h>
 
 static const NSInteger kGANDispatchPeriodSec = 10;
 
@@ -23,6 +24,10 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Crashlytics
+    [Crashlytics startWithAPIKey:@"64fa61fc5170cbc0c21ce61778c46c3b217dedf8"];
+    
+    //Google analytics
     [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-34223732-1"
                                            dispatchPeriod:10
                                                  delegate:nil];
