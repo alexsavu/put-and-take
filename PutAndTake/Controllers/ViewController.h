@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UILabel *sonderjylland;
 @property (nonatomic, strong) UILabel *fyn;
 
--(void) moveNextView;
+- (void)moveNextView:(NSNumber *)pressedButton;
 
 
 @end

@@ -44,7 +44,6 @@
     borderView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1];
     
     [self.view addSubview:borderView];
-    NSLog(@"Borderdview: %f", borderView.frame.origin.x);
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if (screenBounds.size.height == 480) {
         // iphone 4,4s screen
@@ -141,7 +140,7 @@
         [self.fyn setFont:[UIFont fontWithName:@"Raleway" size:38]];
         [borderView addSubview:self.fyn];
         
-        self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, 320.0, 50.0)];
+        self.testDrag = [[TestDragView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2 - 73, 320.0, 50.0)];
         self.testDrag.parentView = self.view;;
         [self.view addSubview:self.testDrag];
     }
