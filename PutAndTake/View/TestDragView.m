@@ -78,12 +78,9 @@
             self.frame = limitFrame;
         }
     }
-    NSLog(@"dragging %f, %f", self.frame.origin.x, self.frame.origin.y);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Frame before move: %f", self.frameBeforeMove.origin.y);
-    NSLog(@"Frame now: %f", self.frame.origin.y);
     if (self.frameBeforeMove.origin.y == self.frame.origin.y || (self.frameBeforeMove.origin.y == 0)) {
         return;
     }
@@ -100,11 +97,12 @@
             if(topDiff < 82.f)
                 topDiff = 82.f;
             
+            if (bottomDiff < 82.f) {
+                bottomDiff = 82.f;
+            }
+            
             if(bottomDiff > MAX_POSITION_Y)
                 bottomDiff = MAX_POSITION_Y;
-            
-            NSLog(@"TopDiff: %i", topDiff);
-            NSLog(@"BottomDiff %i", bottomDiff);
             
             // checking which is closer
             if(topDiff < bottomDiff) {
@@ -117,8 +115,6 @@
         } completion:^(BOOL finished) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"AnimationDone" object:NSStringFromCGPoint(CGPointMake(self.frame.origin.x, self.frame.origin.y))];
         }];
-        
-        NSLog(@"Current position: %f", newFrame.origin.y);
         
         // setting it back to zero so it doesn't get confused with the last point
         self.lastPoint = CGPointZero;
@@ -138,6 +134,10 @@
             if(bottomDiff>MAX_POSITION_IPHONE5_Y)
                 bottomDiff = MAX_POSITION_IPHONE5_Y;
             
+            if (bottomDiff<100) {
+                bottomDiff = 100;
+            }
+            
             // checking which is closer
             if(topDiff < bottomDiff) {
                 lockLocation = topDiff;
@@ -149,8 +149,6 @@
         } completion:^(BOOL finished) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"AnimationDone" object:NSStringFromCGPoint(CGPointMake(self.frame.origin.x, self.frame.origin.y))];
         }];
-        
-        NSLog(@"Current position: %f", newFrame.origin.y);
         
         // setting it back to zero so it doesn't get confused with the last point
         self.lastPoint = CGPointZero;

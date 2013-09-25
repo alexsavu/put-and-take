@@ -37,10 +37,11 @@
     [MBHUDView hudWithBody:@"Loading places" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.f show:YES];
     ServerData *data = [[ServerData alloc] init];
     [data sendRequestsWithCompletionBlock:^{
+        [MBHUDView dismissCurrentHUD];
         self.sharedLocations = data.locations;
         [self lakesPositions];
     } failure:^{
-        NSLog(@"WHYYYYY");
+        [MBHUDView dismissCurrentHUD];
     }];
     [self addBackButton];
 }
@@ -67,17 +68,17 @@
     //Sets the map delegate to this object
     [self.theMapView setDelegate:self];
     
-    //Core location manager
-    locationManager = [[CLLocationManager alloc] init];
-    
-    //Delegate for location
-    [locationManager setDelegate:self];
-    
-    //Asking for all results from the location manager
-    [locationManager setDistanceFilter:kCLDistanceFilterNone];
-    
-    //Make it as acurate as possible
-    [locationManager setDistanceFilter:kCLLocationAccuracyBest];
+//    //Core location manager
+//    locationManager = [[CLLocationManager alloc] init];
+//    
+//    //Delegate for location
+//    [locationManager setDelegate:self];
+//    
+//    //Asking for all results from the location manager
+//    [locationManager setDistanceFilter:kCLDistanceFilterNone];
+//    
+//    //Make it as acurate as possible
+//    [locationManager setDistanceFilter:kCLLocationAccuracyBest];
 
 }
 
@@ -205,29 +206,6 @@
         detailsViewController.phone = [(ClusteredAnnotation*)[view annotation] phone];
         detailsViewController.address = [(ClusteredAnnotation*)[view annotation] address];
     }
-}
-
-
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-//    
-//    CLLocationCoordinate2D coordinate = [userLocation coordinate];
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 250, 250);
-//    [self.mapView setRegion:region animated:YES];
-//    
-//}
-
-
-
-#pragma mark location delegate method
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    NSLog(@"!!!!!!!!!!!!!!!!! :%@", newLocation);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    
-    NSLog(@"Could not find location %@", error);
 }
 
 @end

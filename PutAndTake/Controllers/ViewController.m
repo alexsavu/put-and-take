@@ -150,7 +150,6 @@
 
 -(void)changeFontAcordingly:(NSNotification *)notification{
     CGPoint frame = CGPointFromString([notification object]);
-    NSLog(@"Frame after animation is done: %f", frame.y);
     self.nordjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     self.oestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];
     self.vestjylland.textColor = [UIColor colorWithRed:0 green:0.23 blue:0.42 alpha:1];

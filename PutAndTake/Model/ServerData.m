@@ -22,7 +22,6 @@
     NSURL *url = [NSURL URLWithString:@"http://184.72.245.59:5000/areas"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-//        NSLog(@"App.net Global Stream: %@", JSON);
         self.locations = (NSArray *) JSON;
         
         if (completion) {
